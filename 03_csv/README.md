@@ -5,4 +5,4 @@
 Introduce yourself on the QAF. Include your backstory, real or imagined. *What do you bring* to a team?
 
 - Search first. If the thread does not yet exist, create it.
-- Subject: "'introductions pdX'"
+- Subject: "`introductions pdX`"
