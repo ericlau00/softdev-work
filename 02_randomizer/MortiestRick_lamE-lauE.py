@@ -1,3 +1,8 @@
+# Eric "Morty" Lau
+# SoftDev1 pd1
+# K2 -- NO-body expects the Spanish Inquisition!
+# 2019-09-11 
+  
 import random
 def printRandFromDict(dictionary):
     #Create a list of keys
