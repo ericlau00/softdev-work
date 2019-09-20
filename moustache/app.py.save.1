@@ -8,10 +8,7 @@ def hi():
 @app.route("/my_foist_template")
 def temp():
 	coll = [0,1,1,2,3,5,8]
-	return render_template('seed.html',
-				collection=coll,
-				foo="a title!"
-				)
+`		render_template("static/seed.html")
 if __name__ == "__main__":
 	app.debug = True
 	app.run()
