@@ -4,9 +4,12 @@
 		<title>Solon</title>
 	</head>
 	<body>
-		<form action="/auth">
+		Team name: {{team}}
+		<br>
+		Roster: {{names}}
+		<form action="/auth" method="post">
 			<input type="text" name="username">
-			<input type="submit" value="sub1">
+			<input type="submit" name="sub1">
 		</form>
 	</body>
 </html>
