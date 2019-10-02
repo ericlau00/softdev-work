@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Occupy Flask St</title>
+  </head>
+  <body>
+    <h2>Breakdown of American Workforce by Field </h2>
+    <p>by the Moustachios: Eric "Morty" Lau and Kiran Vuksanaj</p>
+
+    <p>Randomly selected Job, weighted by percentages: {{randomJob}}</p>
+
+
+    <table>
+      {% for key in dict %}
+        <tr>
+          <td>
+            {{key}}
+          </td>
+          <td>
+            {{dict[key]}}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
