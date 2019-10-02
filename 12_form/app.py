@@ -4,7 +4,6 @@
 # 2019-09-26
 
 from flask import Flask, render_template, request
-from utl import solon
 
 app = Flask(__name__)
 
@@ -15,11 +14,9 @@ roster = "Eric \"Morty\" Lau and Raymond Lee"
 def root():
 	return render_template("landing.html",
 							team = team_name,
-							names = roster,
-							util = solon.hello(),
-							)
+							names = roster)
 
-@app.route("/auth", methods=["GET"])
+@app.route("/auth")
 def auth():
 	print("this is the app name", app, end="\n")
 	print("this is the request", request, end="\n")
@@ -31,7 +28,6 @@ def auth():
 							team = team_name,
 							names = roster,
 							username = request.args['username'],
-							# username = request.form['username'],
 							method = request.method)
 
 if __name__ == "__main__":
