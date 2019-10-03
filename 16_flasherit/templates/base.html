@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        {% block head %}
+        <title>
+            {% block title %} {% endblock %} - Plumbus
+        </title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+        <footer>
+            {% block footer %}
+            &copy; Copyright 2019 by Plumbus
+            {% endblock %}
+        </footer>
+    </body>
+</html>

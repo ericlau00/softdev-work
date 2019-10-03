@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>{{team}}</title>
-	</head>
-	<body>
-    Team name: {{team}}
-    <br>
-    Roster: {{names}}
-    <br>
-    <br>
-    Greetings to {{username}}
-    <br>
-    <br>
-    Method used: {{method}}
-    <br>
-    <a href={{url}}>logout</a>
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Welcome {% endblock %}
+
+{% block body %} 
+Team name: {{team}}
+<br>
+Roster: {{names }}
+<br>
+Greetings to {{username}}
+<br>
+Method used: {{method}}
+<br>
+<a href={{url}}>logout</a>
+{% endblock %}
