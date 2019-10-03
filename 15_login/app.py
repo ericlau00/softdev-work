@@ -1,7 +1,7 @@
 # Eric "Morty" Lau
 # SoftDev1 pd1
-# K12 -- Echo Echo Echo
-# 2019-09-26
+# K15 -- Do I Know You?
+# 2019-10-02
 
 from flask import Flask, render_template, request, redirect, session, url_for
 import csv, random

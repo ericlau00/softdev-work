@@ -1,3 +1,8 @@
+# Eric "Morty" Lau
+# SoftDev1 pd1
+# K<number> -- <title>
+# <year>-<month>-<date>
+
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
