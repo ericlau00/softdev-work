@@ -23,7 +23,6 @@ with open('occupations.csv') as csv_file:
 
 #WEIGHTED RANDOM CHOICE (mortiestRick)
 
-
 # returns a weighted random element from a dictionary
 def weightedRandFromDict(dictionary):
     keys = list(dictionary.keys())
@@ -36,9 +35,11 @@ def weightedRandFromDict(dictionary):
 
 @app.route("/")
 def root():
-	return render_template("landing.html",
-							team = team_name,
-							names = roster)
+	return render_template(
+        "landing.html",
+		team = team_name,
+		names = roster
+        )
 
 @app.route("/occupy")
 def jobs():
@@ -57,11 +58,13 @@ def auth():
 	print("this is the request method", request.method, end="\n")
 	print("this is the request args", request.args, end="\n")
 	print("this is the request form", request.form, end="\n")
-	return render_template("response.html",
-							team = team_name,
-							names = roster,
-							username = request.args['username'],
-							method = request.method)
+	return render_template(
+        "response.html",
+		team = team_name,
+		names = roster,
+		username = request.args['username'],
+		method = request.method
+        )
 
 @app.route("/ocupy")
 def misspell():
