@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head> 
-        {% block head %}
-        <title>
-            {% block title %} {% endblock %} - Plumbus
-        </title>
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}
-        {% endblock %}
-        <footer>
-            {% block footer %}
-            &copy; Copyright 2019 by Plumbus
-            {% endblock %}
-        </footer>
-    </body>
+	<head>
+		<title>{{title}} - {{team}}</title>
+	</head>
+	<body>
+		<h4>
+			Team Name: {{team}}
+			<br>
+			Roster: {{names}}
+		</h4>
+		<br>
+		{% for item in get_flashed_messages() %}
+		{{item}} <br>
+		{% endfor %}
+		<br>
+		{% block body %}
+		{% endblock %}
+		<br>
+		<br>
+		<br>
+		copyright Plumbus, 2019
 </html>

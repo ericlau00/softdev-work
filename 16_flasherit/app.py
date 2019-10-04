@@ -1,9 +1,9 @@
-# Eric "Morty" Lau
+# Eric "Morty" Lau, Junhee Lee
 # SoftDev1 pd1
 # K16 -- Oh yes, perhaps I do…
 # 2019-10-03
 
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, flash
 
 app = Flask(__name__)
 app.secret_key = "Test_Key"
@@ -29,6 +29,7 @@ def root():
 
 @app.route("/welcome")
 def welcome():
+    flash("You have successfully logged in!")
     return render_template(
             "response.html",
             team = team_name,
@@ -48,9 +49,11 @@ def auth():
 	# print("this is the request args", request.args, end="\n")
 	# print("this is the request form", request.form, end="\n")
     if(request.form['username'] != username):
+        flash("Failed login!")
         session['reason'] = 'username'
         return redirect(url_for("failure"))
     elif(request.form['password'] != password):
+        flash("Failed login!")
         session['reason'] = "password"
         return redirect(url_for("failure"))
     else:
@@ -64,11 +67,14 @@ def failure():
     print("bad login")
     return render_template(
         "fail.html",
-        reason = session['reason']
+        reason = session['reason'],
+        team = team_name,
+        names = roster
     )
 
 @app.route("/logout")
 def logout():
+    flash("You have successfully logged out!")
     session['login'] = False
     return redirect("/")
     

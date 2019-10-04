@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{{team}}</title>
-	</head>
-	<body>
-		Team name: {{team}}
+<head>
+	<title>{{team}}</title>
+</head>
+<body>
+	Team name: {{team}}
+	<br>
+	Roster: {{names}}
+	<br>
+	<form action="/auth" method="post">
+		Username<input type="text" name="username">
 		<br>
-		Roster: {{names}}
-		<form action="/auth" method="post">
-			Username<input type="text" name="username">
-			<br>
-			Password <input type="password" name="password">
-			<br>
-			<input type="submit" name="sub1">
-		</form>
-	</body>
+		Password <input type="password" name="password">
+		<br>
+		<input type="submit" name="sub1">
+	</form>
+</body>
 </html>
