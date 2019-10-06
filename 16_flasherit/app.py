@@ -24,12 +24,12 @@ def root():
         return render_template(
             "landing.html",
             team = team_name,
-            names = roster
+            names = roster,
+            title = "Login Page"
             )
 
 @app.route("/welcome")
 def welcome():
-    flash("You have successfully logged in!")
     return render_template(
             "response.html",
             team = team_name,
@@ -37,7 +37,8 @@ def welcome():
             # username = request.args['username'],
             username = session['user'],
             method = request.method,
-            url = url_for("logout")
+            url = url_for("logout"),
+            title = "Welcome Page"
     )
 
 @app.route("/auth", methods=["POST"])
@@ -59,6 +60,7 @@ def auth():
     else:
         session['login'] = True
         session['user'] = request.form['username']
+        flash("You have successfully logged in!")
         return redirect(url_for("welcome"))
 
 
@@ -69,7 +71,8 @@ def failure():
         "fail.html",
         reason = session['reason'],
         team = team_name,
-        names = roster
+        names = roster,
+        title = "Bad Login"
     )
 
 @app.route("/logout")
