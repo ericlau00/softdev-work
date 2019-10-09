@@ -1,43 +1,31 @@
-#Eric "Morty" Lau
+#Team Maz Hatters - Joseph Lee and Eric Lau
 #SoftDev1 pd1
 #K17 -- No Trouble
-#2019-10-07
+#2019-10-10
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
 
 DB_FILE="discobandit.db"
+
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-c = db.cursor()             #facilitate db ops
+c = db.cursor()               #facilitate db ops
 
-command = "CREATE TABLE courses(code TEXT, mark INTEGER, id INTEGER);"
-c.execute(command)
+#==========================================================
 
-with open('courses.csv') as courses:
-    reader = csv.DictReader(courses)
-    for row in reader:
+def to_table(data):
+    table = data[:-4]
+    with open(data,'r',newline='') as file:
+        reader = csv.DictReader(file)
+        headers = reader.fieldnames
+        c.execute('CREATE TABLE '+table+' ('+headers[0]+' text, '+headers[1]+' numeric, '+headers[2]+' numeric);')
+        for row in reader:
+            c.execute('INSERT INTO '+table+' VALUES (\''+row.get(headers[0])+'\', '+row.get(headers[1])+', '+row.get(headers[2])+');')
 
-        code = "\"" + row['code'] + "\""
-        mark = row['mark']
-        id = row['id']
+to_table('courses.csv')
+to_table('students.csv')
 
-        command = "INSERT INTO courses VALUES(" + code + "," + mark + "," + id + ");"
-        c.execute(command)
+#==========================================================
 
-command = "CREATE TABLE students(name TEXT, age INTEGER, id INTEGER);"
-c.execute(command)
-
-with open('students.csv') as students:
-    reader = csv.DictReader(students)
-    for row in reader:
-
-        name = "\"" + row['name'] + "\""
-        age = row['age']
-        id = row['id']
-
-        command = "INSERT INTO students VALUES(" + name + "," + age + "," + id + ");"
-        c.execute(command)
-
-db.commit()
-db.close()
-
+db.commit() #save changes
+db.close()  #close database
