@@ -15,12 +15,12 @@ c = db.cursor()               #facilitate db ops
 
 def to_table(data):
     table = data[6:-4]
-    with open(data,'r',newline='') as file:
+    with open(data,'r') as file:
         reader = csv.DictReader(file)
         headers = reader.fieldnames
-        c.execute('CREATE TABLE '+table+' ('+headers[0]+' text, '+headers[1]+' numeric, '+headers[2]+' numeric);')
+        c.execute('CREATE TABLE '+ table +' ('+headers[0]+' TEXT, '+headers[1]+' INTEGER, '+headers[2]+' INTEGER PRIMARY_KEY);')
         for row in reader:
-            c.execute('INSERT INTO '+table+' VALUES (\''+row.get(headers[0])+'\', '+row.get(headers[1])+', '+row.get(headers[2])+');')
+            c.execute('INSERT INTO '+ table +' VALUES (\''+row.get(headers[0])+'\', '+row.get(headers[1])+', '+row.get(headers[2])+');')
 
 to_table("./csv/courses.csv")
 to_table("./csv/students.csv")
