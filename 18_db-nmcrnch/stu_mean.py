@@ -10,33 +10,44 @@ DB_FILE='discobandit.db'
 db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 
-data = c.execute('''
-    SELECT students.id, students.name
-    FROM students; ''')
+def add_course(course,mark,id):
+    c.execute(f'INSERT INTO courses VALUES (\'{course}\',{mark},{id});')
 
-#the key is the student's id
-#the value is a array which houses the name, number of classes, and sum of grades 
-dictionary = {id: [name, 0, 0] for id, name in data}
+def average():
+    data = c.execute('''
+        SELECT students.id, students.name
+        FROM students; ''')
 
-data = c.execute('''
-    SELECT students.id, mark
-    FROM courses, students
-    WHERE courses.id = students.id;''')
+    #the key is the student's id
+    #the value is a array which houses the name, number of classes, and sum of grades 
+    dictionary = {id: [name, 0, 0] for id, name in data}
 
-for id, mark in data:
-    grades[id][0] += 1 #number of classes is incremented
-    grades[id][1] += mark #sum of grades is incremented
+    data = c.execute('''
+        SELECT students.id, mark
+        FROM courses, students
+        WHERE courses.id = students.id;''')
 
-c.execute('CREATE TABLE IF NOT EXISTS stu_avg (id INTEGER PRIMARY_KEY, gpa REAL);')
+    for id, mark in data:
+        dictionary[id][1] += 1 #number of classes is incremented
+        dictionary[id][2] += mark #sum of grades is incremented
 
-for id in dictionary.keys():
+    c.execute('DROP TABLE IF EXISTS stu_avg;')
+    c.execute('CREATE TABLE IF NOT EXISTS stu_avg (id INTEGER PRIMARY_KEY, gpa REAL);')
 
-    name = dictionary[id][0]
-    gpa = dictionary[id][2] / dictionary[id][1]
+    for id in sorted(dictionary.keys()):
+        name = dictionary[id][0]
+        gpa = dictionary[id][2] / dictionary[id][1]
 
-    c.execute(f'INSERT INTO stu_avg (id, gpa) VALUES ({id}, {gpa});')
-    
-    print(f'name: {name}', f'id: {id}', f'average: {gpa}', sep=" // ")
+        c.execute(f'INSERT INTO stu_avg (id, gpa) VALUES ({id}, {gpa});')
+        print(f'id: {id}', f'name: {name}', f'average: {gpa}', sep=" // ")
+
+print("BEFORE ADDING COURSE")
+average()
+
+add_course('Rollerblading',90,4)
+
+print("\nAFTER ADDING COURSE")
+average()
 
 db.commit()
 db.close()

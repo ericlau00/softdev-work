@@ -18,7 +18,7 @@ def to_table(data):
     with open(data,'r') as file:
         reader = csv.DictReader(file)
         headers = reader.fieldnames
-        c.execute(f'CREATE TABLE {table} ( {headers[0]} TEXT, {headers[1]} INTEGER, {headers[2]} INTEGER PRIMARY_KEY);')
+        c.execute(f'CREATE TABLE IF NOT EXISTS {table} ({headers[0]} TEXT, {headers[1]} INTEGER, {headers[2]} INTEGER PRIMARY_KEY);')
         for row in reader:
             c.execute(f'INSERT INTO {table} VALUES (\'{row.get(headers[0])}\', {row.get(headers[1])}, {row.get(headers[2])});')
 
