@@ -1,0 +1,48 @@
+body {
+  background-color:#666;
+  font-family:sans-serif;
+}
+
+h1 {
+  width:100%;
+  text-align:center;
+  color:white;
+  background-color:#bebebe;
+  margin:0;
+}
+
+table {
+  background-color:#767676;
+  padding:10px;
+}
+
+td {
+  vertical-align:top;
+  width:85%;
+}
+
+#navbar{
+  width:15%;
+}
+
+#main {
+  width:85%;
+}
+
+ul {
+  list-style-type:none;
+  padding-left:0;
+}
+
+a {
+  text-decoration:none;
+  color:white;
+}
+
+div {
+  padding:1%;
+  text-align:right;
+  background-color:#565656;
+  width:98%;
+  color:#6f706b;
+}
