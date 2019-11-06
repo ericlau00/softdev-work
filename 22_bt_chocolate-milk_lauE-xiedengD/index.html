@@ -24,21 +24,101 @@ K22 -- Who Does Frame Work For?
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Chocolate Milk</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#help">Help</a>
                     </li>
-                    <li class="mav-item">
-                        <a class="nav-link" href="#">Help</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </nav>
+        <div class="jumbotron">
+            <p class="display-4">What is Chocolate Milk?</p>
+            <p class="lead">
+                A demonstration of Bootstrap 4 by Eric Lau and David Xiedeng.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-4 bg-light p-5 mr-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ac placerat vestibulum lectus mauris ultrices eros in cursus. Lectus proin nibh
+                nisl condimentum id venenatis a condimentum vitae. Vestibulum morbi blandit cursus risus at. Aenean vel
+                elit scelerisque mauris pellentesque. Orci phasellus egestas tellus rutrum tellus pellentesque eu
+                tincidunt. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Mattis vulputate enim nulla
+                aliquet. Id leo in vitae turpis massa sed. Amet facilisis magna etiam tempor orci eu lobortis elementum
+                nibh. Morbi tincidunt ornare massa eget egestas purus. Sed turpis tincidunt id aliquet. Nibh mauris
+                cursus mattis molestie a iaculis at erat.
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et
+                        dolore magna aliqua. Ac placerat vestibulum lectus mauris ultrices eros in cursus. Lectus proin
+                        nibh
+                        nisl condimentum id venenatis a condimentum vitae. Vestibulum morbi blandit cursus risus at.
+                        Aenean
+                        vel
+                        elit scelerisque mauris pellentesque. Orci phasellus egestas tellus rutrum tellus pellentesque
+                        eu
+                        tincidunt. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Mattis vulputate enim
+                        nulla
+                        aliquet. Id leo in vitae turpis massa sed. Amet facilisis magna etiam tempor orci eu lobortis
+                        elementum
+                        nibh. Morbi tincidunt ornare massa eget egestas purus. Sed turpis tincidunt id aliquet. Nibh
+                        mauris
+                        cursus mattis molestie a iaculis at erat.
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et
+                        dolore magna aliqua. Ac placerat vestibulum lectus mauris ultrices eros in cursus. Lectus proin
+                        nibh
+                        nisl condimentum id venenatis a condimentum vitae. Vestibulum morbi blandit cursus risus at.
+                        Aenean
+                        vel
+                        elit scelerisque mauris pellentesque. Orci phasellus egestas tellus rutrum tellus pellentesque
+                        eu
+                        tincidunt. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Mattis vulputate enim
+                        nulla
+                        aliquet. Id leo in vitae turpis massa sed. Amet facilisis magna etiam tempor orci eu lobortis
+                        elementum
+                        nibh. Morbi tincidunt ornare massa eget egestas purus. Sed turpis tincidunt id aliquet. Nibh
+                        mauris
+                        cursus mattis molestie a iaculis at erat.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container" id="help">
         <div class="jumbotron">
             <p class="lead">
                 The main purpose of Bootstrap is its grid system which helps to format your website layout
@@ -125,6 +205,10 @@ K22 -- Who Does Frame Work For?
         <br>
         <div class="row">
             <p class="lead">
+                xs, sm, md, lg, xl mean extra small, small, medium, large, extra large respectively
+                By adding the above modifiers to the col class via col-sm-9, Bootstrap will make the col 9 units wide on
+                small screens. If the sizes for sizes above small are not defined, then the col will also be 9 units for
+                md,lg,xl
                 <ul>
                     <li> Smaller than 576 pixels</li>
                     <li>576–768 pixels</li>
@@ -132,10 +216,6 @@ K22 -- Who Does Frame Work For?
                     <li>992–1200 pixels</li>
                     <li>Larger than 1200 pixels</li>
                 </ul>
-                xs, sm, md, lg, xl mean extra small, small, medium, large, extra large respectively
-                By adding the above modifiers to the col class via col-sm-9, Bootstrap will make the col 9 units wide on
-                small screens. If the sizes for sizes above small are not defined, then the col will also be 9 units for
-                md,lg,xl
             </p>
         </div>
         <div class="row">
@@ -186,11 +266,14 @@ K22 -- Who Does Frame Work For?
                 Scelerisque viverra mauris in aliquam.
                 <br>
                 <br>
-                <p class="lead">
+
+                <p class="lead text-center">
                     another row inside the column
+                    <br>
+                    the divisions inside are now relative to the size of the parent row
                 </p>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-sm-6">
                         heloo this is another column within a column
                         <br>
                         Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
@@ -202,7 +285,7 @@ K22 -- Who Does Frame Work For?
                         fringilla urna.
                         Scelerisque viverra mauris in aliquam.
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-sm-6">
                         heloo this is another column within a column
                         <br>
                         Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
