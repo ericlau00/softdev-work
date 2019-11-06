@@ -61,7 +61,7 @@ K22 -- Who Does Frame Work For?
     </div>
     <hr>
     <div class="container" id="help">
-        <div class="jumbotron p-5">
+        <div class="row p-5 bg-light">
             <p class="lead">
                 A row defines a horizontal bit of content
                 <br>
@@ -69,14 +69,7 @@ K22 -- Who Does Frame Work For?
                 <br>
                 A column can have varying sizes from 1 to 12.
                 <br>
-                <!-- Columns can be defined without a size component so that each are of equal width within the row
-                <br>
-                Bootstrap also automatically makes the website responsive to the width of your browser screen.
-                <br>
-                Try shrinking your browser screen now.
-                <br> -->
-            </p>
-            <code>&lt;div class="row"&gt;
+                <code>&lt;div class="row"&gt;
                         <br>
                         &nbsp;&nbsp;&lt;div class="col-1"&gt;&lt;/div&gt;
                         <br>
@@ -88,9 +81,9 @@ K22 -- Who Does Frame Work For?
                         <br>
                         &lt;/div&gt;
                     </code>
+            </p>
         </div>
         <div class="row">
-
             <div class="col-1">
                 <p> col-1</p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -124,7 +117,7 @@ K22 -- Who Does Frame Work For?
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row p-5 bg-light">
             <p class="lead">
                 They can also be defined without widths such that Bootstrap automatically fits to browser width.
                 <br>
@@ -139,7 +132,6 @@ K22 -- Who Does Frame Work For?
             </p>
         </div>
         <div class="row">
-
             <div class="col">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Facilisis mauris sit amet massa. In egestas erat imperdiet sed. Nibh sit amet
@@ -159,8 +151,30 @@ K22 -- Who Does Frame Work For?
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row bg-light p-5">
             <p class="lead">
+                One of the most important aspects of Bootstrap is the ability to respond to changes in screen size.
+                <br>
+                The 5 definitions of screen size:
+                <ul class="list-inline pl-3">
+                    <li class="list-inline-item">xs: smaller than 576px</li>
+                    <li class="list-inline-item">sm: 576px-768px</li>
+                    <li class="list-inline-item">md: 768px-992px</li>
+                    <li class="list-inline-item">lg: 992-1200 pixels</li>
+                    <li class="list-inline-item">xl: larger than 1200px</li>
+                </ul>
+            </p>
+            <p class="lead">
+                The size of a col when the screen falls within one of the sizes can be defined with the following
+                modifier:
+                <br>
+                <code>&nbsp;&lt;div class="col-&lt;screen-size&gt;&lt;width-size&gt;"&gt;&lt;/div&gt;</code>
+                <br>
+                <br>
+                A div can have multiple size definitions that are separated by a space such that the size changes 
+                when the screen size changes from smaller to larger. 
+            </p>
+            <!-- <p class="lead">
                 xs, sm, md, lg, xl mean extra small, small, medium, large, extra large respectively
                 By adding the above modifiers to the col class via col-sm-9, Bootstrap will make the col 9 units wide on
                 small screens. If the size is greater thansmall are not defined, then the col will also be 9 units for
@@ -173,7 +187,7 @@ K22 -- Who Does Frame Work For?
                     <li>992–1200 pixels</li>
                     <li>Larger than 1200 pixels</li>
                 </ul>
-            </p>
+            </p> -->
         </div>
         <div class="row">
             <div class="col-sm-12 col-lg-4 mb-sm-5 mb-lg-0">
