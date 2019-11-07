@@ -64,28 +64,18 @@ K22 -- Who Does Frame Work For?
         <div class="row p-5 bg-light">
             <p class="lead">
                 Everything is held within a container class which adds some margins and padding to the side of the
-                website.
-                A row defines a horizontal bit of content
-                <br>
-                Each row class typically has column classes within it which define vertical content
-                <br>
-                A column can have varying sizes from 1 to 12.
-                <br>
+                website. <br>
+                A row defines a horizontal bit of content. <br>
+                Each row class typically has column classes within it which define vertical content.<br>
+                A column can have varying sizes from 1 to 12. <br>
                 <code>
-                    &lt;div class="container"&gt;
-                    <br>
-                    &nbsp;&nbsp;&lt;div class="row"&gt;
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-1"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-2"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-3"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-6"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;/div&gt;
-                        <br>
+                    &lt;div class="container"&gt; <br>
+                    &nbsp;&nbsp;&lt;div class="row"&gt; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-1"&gt;&lt;/div&gt; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-2"&gt;&lt;/div&gt; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-3"&gt;&lt;/div&gt; <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-6"&gt;&lt;/div&gt;<br>
+                        &nbsp;&nbsp;&lt;/div&gt; <br>
                         &lt;/div&gt;
                     </code>
             </p>
@@ -126,14 +116,10 @@ K22 -- Who Does Frame Work For?
         <br>
         <div class="row p-5 bg-light">
             <p class="lead">
-                They can also be defined without widths such that Bootstrap automatically fits to browser width.
-                <br>
-                <code>&lt;div class="row"&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;div class="col"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;div class="col"&gt;&lt;/div&gt;
-                        <br>
+                They can also be defined without widths such that Bootstrap automatically fits to browser width. <br>
+                <code>&lt;div class="row"&gt; <br>
+                        &nbsp;&nbsp;&lt;div class="col"&gt;&lt;/div&gt; <br>
+                        &nbsp;&nbsp;&lt;div class="col"&gt;&lt;/div&gt; <br>
                         &lt;/div&gt;
                     </code>
             </p>
@@ -178,22 +164,17 @@ K22 -- Who Does Frame Work For?
 
             <p class="lead">
                 The size of a col when the screen falls within one of the sizes can be defined with the following
-                modifier:
-                <br>
-                <code>&nbsp;&lt;div class="col-&lt;screen-size&gt;&lt;width-size&gt;"&gt;&lt;/div&gt;</code>
-                <br>
+                modifier: <br>
+                <code>&nbsp;&lt;div class="col-&lt;screen-size&gt;&lt;width-size&gt;"&gt;&lt;/div&gt;</code> <br>
                 <br>
                 A div can have multiple size definitions that are separated by a space such that the size changes
                 when the screen size changes from smaller to larger. The following columns are defined as follows.
                 Note that when the screen is shrunk to small, the columns takes up all 12 dividers. However, when on the
-                large screen, the first column takes up 4 while the second takes up 8.
-                <br>
-                <code>&lt;div class="row"&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-4"&gt;&lt;/div&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-8"&gt;&lt;/div&gt;
-                        <br>
+                large screen, the first column takes up 4 while the second takes up 8. <br>
+                <code>
+                    &lt;div class="row"&gt;<br>
+                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-4"&gt;&lt;/div&gt; <br>
+                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-8"&gt;&lt;/div&gt; <br>
                         &lt;/div&gt;
                     </code>
             </p>
@@ -213,15 +194,12 @@ K22 -- Who Does Frame Work For?
                 aliquam vestibulum. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Leo duis ut diam quam.
                 Blandit libero volutpat sed cras ornare arcu dui. Blandit cursus risus at ultrices mi tempus imperdiet
                 nulla malesuada. Sed viverra tellus in hac. Purus sit amet luctus venenatis lectus magna fringilla urna.
-                Scelerisque viverra mauris in aliquam.
-                <br>
-                <br>
+                Scelerisque viverra mauris in aliquam. <br> <br>
 
                 <p class="lead text-center">
-                    another row inside the column
-                    <br>
-                    the divisions inside are now relative to the size of the parent row.
-                    <br> Columns below are each of size 6.
+                    another row inside the column.<br>
+                    the divisions inside are now relative to the size of the parent row. <br>
+                    Columns below are each of size 6.
                 </p>
                 <div class="row">
                     <div class="col-sm-6">
@@ -245,10 +223,43 @@ K22 -- Who Does Frame Work For?
                         Scelerisque viverra mauris in aliquam.
                     </div>
                 </div>
-
             </div>
         </div>
-
+        <div class="row m-1 p-5 bg-light">
+            <p class="lead">
+                Bootstrap also makes it super easy to work with margins and padding. <br>
+                Margins and padding work on a scale of 1 to 5, 1 being the smallest and 5 being the largest.<br>
+                <code>
+                    &lt;div class="row p&lt;direction&gt;-&lt;size&gt;"&gt;<br>
+                    </code>
+                <code>
+                    &lt;div class="row m&lt;direction&gt;-&lt;size&gt;"&gt;<br>
+                    </code>
+                directions include: t (top), b (bottom), l (left), r (right), x (left and right), y (top and bottom), or
+                none (for all)
+            </p>
+        </div>
+        <div class="row p-5 m-5 bg-light">
+            <p class="lead">
+                <code>
+                &lt;div class="row p-5 m-5"&gt;<br>
+                </code>
+            </p>
+        </div>
+        <div class="row m-5 bg-light">
+            <p class="lead">
+                <code>
+                &lt;div class="row m-5"&gt;<br>
+                </code>
+            </p>
+        </div>
+        <div class="row p-3 bg-light">
+            <p class="lead">
+                <code>
+                &lt;div class="row p-3"&gt;<br>
+                </code>
+            </p>
+        </div>
     </div>
     <hr>
     <div class="container" id="help">
@@ -283,6 +294,15 @@ K22 -- Who Does Frame Work For?
                 labeled by class="dropdown-menu" and verbatim ,
                 with each element labelled by dropdown-item.
     </div>
+
+    <div class="container mt-5">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>You're now an official Bootstrapper!</p>
+            <hr>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
