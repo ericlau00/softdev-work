@@ -63,21 +63,28 @@ K22 -- Who Does Frame Work For?
     <div class="container" id="help">
         <div class="row p-5 bg-light">
             <p class="lead">
+                Everything is held within a container class which adds some margins and padding to the side of the
+                website.
                 A row defines a horizontal bit of content
                 <br>
                 Each row class typically has column classes within it which define vertical content
                 <br>
                 A column can have varying sizes from 1 to 12.
                 <br>
-                <code>&lt;div class="row"&gt;
+                <code>
+                    &lt;div class="container"&gt;
+                    <br>
+                    &nbsp;&nbsp;&lt;div class="row"&gt;
                         <br>
-                        &nbsp;&nbsp;&lt;div class="col-1"&gt;&lt;/div&gt;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-1"&gt;&lt;/div&gt;
                         <br>
-                        &nbsp;&nbsp;&lt;div class="col-2"&gt;&lt;/div&gt;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-2"&gt;&lt;/div&gt;
                         <br>
-                        &nbsp;&nbsp;&lt;div class="col-3"&gt;&lt;/div&gt;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-3"&gt;&lt;/div&gt;
                         <br>
-                        &nbsp;&nbsp;&lt;div class="col-6"&gt;&lt;/div&gt;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="col-6"&gt;&lt;/div&gt;
+                        <br>
+                        &nbsp;&nbsp;&lt;/div&gt;
                         <br>
                         &lt;/div&gt;
                     </code>
@@ -151,19 +158,24 @@ K22 -- Who Does Frame Work For?
             </div>
         </div>
         <br>
-        <div class="row bg-light p-5">
+        <div class="row p-5 bg-light mb-3">
             <p class="lead">
                 One of the most important aspects of Bootstrap is the ability to respond to changes in screen size.
+                If you shrink the browser size and look at the columns in the previous sections, you notice that the
+                reading experience is greatly hindered. This can be fixed with the following
                 <br>
-                The 5 definitions of screen size:
-                <ul class="list-inline pl-3">
-                    <li class="list-inline-item">xs: smaller than 576px</li>
-                    <li class="list-inline-item">sm: 576px-768px</li>
-                    <li class="list-inline-item">md: 768px-992px</li>
-                    <li class="list-inline-item">lg: 992-1200 pixels</li>
-                    <li class="list-inline-item">xl: larger than 1200px</li>
-                </ul>
+                Bootstrap has 5 definitions of screen size:
             </p>
+            <div class="col-12">
+                <ul class="list-unstyled">
+                    <li>xs: smaller than 576px</li>
+                    <li>sm: 576px-768px</li>
+                    <li>md: 768px-992px</li>
+                    <li>lg: 992-1200 pixels</li>
+                    <li>xl: larger than 1200px</li>
+                </ul>
+            </div>
+
             <p class="lead">
                 The size of a col when the screen falls within one of the sizes can be defined with the following
                 modifier:
@@ -171,64 +183,31 @@ K22 -- Who Does Frame Work For?
                 <code>&nbsp;&lt;div class="col-&lt;screen-size&gt;&lt;width-size&gt;"&gt;&lt;/div&gt;</code>
                 <br>
                 <br>
-                A div can have multiple size definitions that are separated by a space such that the size changes 
-                when the screen size changes from smaller to larger. 
+                A div can have multiple size definitions that are separated by a space such that the size changes
+                when the screen size changes from smaller to larger. The following columns are defined as follows.
+                Note that when the screen is shrunk to small, the columns takes up all 12 dividers. However, when on the
+                large screen, the first column takes up 4 while the second takes up 8.
+                <br>
+                <code>&lt;div class="row"&gt;
+                        <br>
+                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-4"&gt;&lt;/div&gt;
+                        <br>
+                        &nbsp;&nbsp;&lt;div class="col-sm-12 col-lg-8"&gt;&lt;/div&gt;
+                        <br>
+                        &lt;/div&gt;
+                    </code>
             </p>
-            <!-- <p class="lead">
-                xs, sm, md, lg, xl mean extra small, small, medium, large, extra large respectively
-                By adding the above modifiers to the col class via col-sm-9, Bootstrap will make the col 9 units wide on
-                small screens. If the size is greater thansmall are not defined, then the col will also be 9 units for
-                md,lg,xl
-
-                <ul>
-                    <li> Smaller than 576 pixels</li>
-                    <li>576–768 pixels</li>
-                    <li>768–992 pixels</li>
-                    <li>992–1200 pixels</li>
-                    <li>Larger than 1200 pixels</li>
-                </ul>
-            </p> -->
         </div>
         <div class="row">
-            <div class="col-sm-12 col-lg-4 mb-sm-5 mb-lg-0">
-                class="col-sm-12 col-lg-4 mb-sm-5 mb-lg-0"
-                <br>
-                <b>This column is defined as 12 wide for small screens and 4 wide for large screens
-                    This column also has a bottom margin of 5 to separate it from the next column. <br>
-                    Margins can easily be added by adding m[one of the following in the list]-[size]
-                    sizes go from 0-5 or auto. You can also specify which sizes you want the margin to apply to</b>
-                <ul>
-                    <li>
-                        t - top
-                    </li>
-                    <li>
-                        b - bottom
-                    </li>
-                    <li>
-                        l - left
-                    </li>
-                    <li>
-                        r - right
-                    </li>
-                    <li>
-                        x - both left right
-                    </li>
-                    <li>
-                        y - both top bottom
-                    </li>
-                    <li>
-                        blank - all
-                    </li>
-                </ul>
+            <div class="col-sm-12 col-lg-4 mb-5">
                 Scelerisque felis imperdiet proin fermentum leo vel. Nullam eget felis eget nunc lobortis mattis aliquam
                 faucibus. Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
-                aliquam vestibulum.
+                aliquam vestibulum. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Leo duis ut diam quam.
+                Blandit libero volutpat sed cras ornare arcu dui. Blandit cursus risus at ultrices mi tempus imperdiet
+                nulla malesuada. Sed viverra tellus in hac. Purus sit amet luctus venenatis lectus magna fringilla urna.
+                Scelerisque viverra mauris in aliquam.
             </div>
             <div class="col-sm-12 col-lg-8">
-                "col-sm-12 col-lg-8"
-                <br>
-                <b>This column is defined as 12 for small, 8 for large</b>
-                <br>
                 Scelerisque felis imperdiet proin fermentum leo vel. Nullam eget felis eget nunc lobortis mattis aliquam
                 faucibus. Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
                 aliquam vestibulum. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Leo duis ut diam quam.
@@ -241,12 +220,11 @@ K22 -- Who Does Frame Work For?
                 <p class="lead text-center">
                     another row inside the column
                     <br>
-                    the divisions inside are now relative to the size of the parent row
+                    the divisions inside are now relative to the size of the parent row.
+                    <br> Columns below are each of size 6.
                 </p>
                 <div class="row">
                     <div class="col-sm-6">
-                        heloo this is another column within a column
-                        <br>
                         Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
                         aliquam vestibulum. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Leo duis ut diam
                         quam.
@@ -257,8 +235,6 @@ K22 -- Who Does Frame Work For?
                         Scelerisque viverra mauris in aliquam.
                     </div>
                     <div class="col-sm-6">
-                        heloo this is another column within a column
-                        <br>
                         Non curabitur gravida arcu ac tortor dignissim convallis aenean et. Porttitor massa id neque
                         aliquam vestibulum. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Leo duis ut diam
                         quam.
