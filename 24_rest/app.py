@@ -1,7 +1,7 @@
 # Eric "Morty" Lau
 # SoftDev1 pd1
-# K<number> -- <title>
-# <year>-<month>-<date>
+# K24 -- A RESTful Journey Skyward
+# 2019-11-12
 
 from flask import Flask, request, render_template
 import urllib
