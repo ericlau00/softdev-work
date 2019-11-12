@@ -7,7 +7,7 @@ Your (duo) job:
 **Write a flask app** that uses session capabilities to allow a user to login and logout.
 
 
-Specifications/Guidelines:
+<u>Specifications/Guidelines</u>:
 
 - Hardcode a single username/password combination.
 - HTML form send​s​ data to Flask app.
@@ -18,10 +18,13 @@ Specifications/Guidelines:
     - b) loads a welcome page, if the user is logged in.
 - Welcome page (for successful login) should have a logout button that goes to a separate route that will log the user out of the session.
 - When a user logs in, a session should be established with the username stored.
+- Addendum: In the root of this flask app folder, make a directory "doc" and store in it 
+    - "sitemap.jpg" -- your KtS-based site map
+    - "teamflag.jpg" -- your glorious team flag
 - Name your main driver **app.py**
 - File this under **15_login** in your workshop. (Both Devos.)
 
-Protips:
+<u>Protips</u>:
 
 - ***Simplicity is divine.***
 - Diagnostic print statements are your friend.
