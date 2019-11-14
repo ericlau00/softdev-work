@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block body %}
-  <p> {{ name }} </p>
+  <p> Name: {{ name }} </p>
+  <p> Species: {{ species }}</p>
+  <p> Gender: {{ gender }}</p>
   <img src= {{avatar}} width=300>
   {{super()}}
 {% endblock %}

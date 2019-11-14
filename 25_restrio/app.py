@@ -29,7 +29,8 @@ def countries():
         "countries.html", 
         title = "Countries API Demo",
         flag=data[0]['flag'], 
-        name=data[0]['name'])
+        name=data[0]['name'],
+        demonym=data[0]['demonym'])
 
 @app.route("/rick")
 def rick():
@@ -39,7 +40,9 @@ def rick():
         "rick.html", 
         title = "Rick and Morty API Demo",
         avatar=data['image'], 
-        name=data['name'])
+        name=data['name'],
+        species=data['species'],
+        gender=data['gender'])
 
 @app.route("/met")
 def met():
@@ -49,7 +52,8 @@ def met():
         "met.html", 
         title = "Met Museum API Demo",
         image=data['primaryImage'], 
-        name=data['objectName'])
+        name=data['objectName'],
+        department=data['department'])
 
 if __name__ == "__main__":
     app.debug = True
