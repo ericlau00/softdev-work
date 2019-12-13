@@ -11,7 +11,7 @@ var fibBinet = function (i) {
 
 var fibList = [];
 var fibDP = function (i) {
-    fibList[i] = (i - 2) ? i: fibList[i - 1] + fibList[i - 2];
+    fibList[i] = (i < 2) ? i : fibList[i - 1] + fibList[i - 2];
     return fibList[i];
 }
 
@@ -34,51 +34,47 @@ for (var i = 0; i < lis.length; i++) {
 }
 
 var addItem = function (e) {
+    console.log(e);
     var list = document.getElementById("thelist");
     var item = document.createElement("li");
-    item.innerText = "WORD";
+    item.innerHTML = "WORD";
     addListeners(item);
     list.appendChild(item);
 };
 
 var changeHeading = function (e) {
     var h = document.getElementById("h");
-    h.innerHTML = e["target"]["innerText"];
+    h.innerHTML = e["target"]["innerHTML"];
 };
 
 var removeItem = function (e) {
+    console.log(e);
     e["target"].remove();
 };
 
-var addFib = function (e) {
+var addFib = function (e, fibFunc) {
     console.log(e);
     var list = document.getElementById("fiblist");
     var item = document.createElement("li");
     var numLi = list.getElementsByTagName('li').length;
-    item.innerText = fibRecur(numLi);
+    item.innerHTML = fibFunc(numLi);
     list.appendChild(item);
+}
+
+var addFibRecur = function (e) {
+    addFib(e, fibRecur);
 };
 
-var addFib2 = function (e) {
-    console.log(e);
-    var list = document.getElementById("fiblist");
-    var item = document.createElement("li");
-    var numLi = list.getElementsByTagName('li').length;
-    item.innerText = fibBinet(numLi);
-    list.appendChild(item);
+var addFibBinet = function (e) {
+    addFib(e, fibBinet);
 }
 
-var addFib3 = function (e) {
-    console.log(e);
-    var list = document.getElementById("fiblist");
-    var item = document.createElement("li");
-    var numLi = list.getElementsByTagName('li').length;
-    item.innerText = fibDP(numLi);
-    list.appendChild(item);
-
+var addFibDP = function (e) {
+    addFib(e, fibDP);
 }
+
 var button = document.getElementById("b");
 button.addEventListener("click", addItem);
 
 var fb = document.getElementById("fb");
-fb.addEventListener("click", addFib3);
+fb.addEventListener("click", addFibRecur);
