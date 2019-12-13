@@ -12,7 +12,7 @@ function fibonacci(i) {
     );
 }
 
-var changeHeading = function (e) {
+var changeHeading = function(e) {
     var h = document.getElementById("h");
     const res = e["target"]["innerText"];
     h.innerHTML = res;
@@ -36,13 +36,19 @@ for (var i = 0; i < lis.length; i++) {
     });
 }
 
-var addItem = function (e) {
+var addItem = function(e) {
     var list = document.getElementById("thelist");
     var item = document.createElement("li");
     item.innerText = "WORD";
-    // item.onmouseover = () => {
-    //     document.getElementById("h").innerText = "WORD";
-    // };
+    item.addEventListener("mouseover", e => {
+        changeHeading(e);
+    });
+    item.addEventListener("mouseout", () => {
+        document.getElementById("h").innerHTML = "Hello World!";
+    });
+    item.addEventListener("click", e => {
+        removeItem(e);
+    });
     list.appendChild(item);
 };
 
@@ -55,9 +61,6 @@ var addFib = function (e) {
     var numLi = list.getElementsByTagName('li').length;
     item.innerText = fibonacci(numLi);
     list.appendChild(item);
-};
-
-var addFib2 = function (e) {
 };
 
 var fb = document.getElementById("fb");
