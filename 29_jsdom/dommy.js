@@ -1,30 +1,21 @@
-var fibRecur = function (i) {
-    return (i < 2) ? i : fibRecur(i - 1) + fibRecur(i - 2);
-}
 
-var fibBinet = function (i) {
-    return Math.floor(
-        (1 / Math.sqrt(5)) *
-        (Math.pow((1 + Math.sqrt(5)) / 2, i) - Math.pow((1 - Math.sqrt(5)) / 2, i))
-    );
-}
+var changeHeading = function (e) {
+    console.log(e);
+    var h = document.getElementById("h");
+    h.innerHTML = this.innerHTML;
+};
 
-var fibList = [];
-var fibDP = function (i) {
-    fibList[i] = (i < 2) ? i : fibList[i - 1] + fibList[i - 2];
-    return fibList[i];
-}
+var removeItem = function (e) {
+    console.log(e);
+    this.remove();
+};
 
 var addListeners = function (element) {
-    element.addEventListener("mouseover", function (e) {
-        changeHeading(e);
-    });
-    element.addEventListener("mouseout", function () {
+    element.addEventListener("mouseover", changeHeading);
+    element.addEventListener("mouseout", () => {
         document.getElementById("h").innerHTML = "Hello World!";
     });
-    element.addEventListener("click", function (e) {
-        removeItem(e);
-    });
+    element.addEventListener("click", removeItem);
 }
 
 var lis = document.getElementsByTagName("li");
@@ -42,15 +33,8 @@ var addItem = function (e) {
     list.appendChild(item);
 };
 
-var changeHeading = function (e) {
-    var h = document.getElementById("h");
-    h.innerHTML = e["target"]["innerHTML"];
-};
-
-var removeItem = function (e) {
-    console.log(e);
-    e["target"].remove();
-};
+var button = document.getElementById("b");
+button.addEventListener("click", addItem);
 
 var addFib = function (e, fibFunc) {
     console.log(e);
@@ -61,20 +45,30 @@ var addFib = function (e, fibFunc) {
     list.appendChild(item);
 }
 
-var addFibRecur = function (e) {
-    addFib(e, fibRecur);
-};
+var addFibRecur = function (e) { addFib(e, fibRecur); };
 
-var addFibBinet = function (e) {
-    addFib(e, fibBinet);
+var addFibBinet = function (e) { addFib(e, fibBinet); }
+
+var addFibDP = function (e) { addFib(e, fibDP); }
+
+var fibRecur = function (i) {
+    return (i < 2) ? i : fibRecur(i - 1) + fibRecur(i - 2);
 }
 
-var addFibDP = function (e) {
-    addFib(e, fibDP);
+var fibBinet = function (i) {
+    var root5 = Math.sqrt(5);
+    var phi = (1 + root5) / 2;
+    var psi = (1 - root5) / 2;
+    return Math.floor(
+        (Math.pow(phi, i) - Math.pow(psi, i)) / root5
+    );
 }
 
-var button = document.getElementById("b");
-button.addEventListener("click", addItem);
+var fibList = [];
+var fibDP = function (i) {
+    fibList[i] = (i < 2) ? i : fibList[i - 1] + fibList[i - 2];
+    return fibList[i];
+}
 
 var fb = document.getElementById("fb");
-fb.addEventListener("click", addFibRecur);
+fb.addEventListener("click", addFibDP);

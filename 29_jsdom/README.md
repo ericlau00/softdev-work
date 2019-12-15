@@ -25,6 +25,13 @@ PHASE IV:
   - add a new item to your list, showing the next Fibonacci number.
 - Beyond!: add more lists that generate other sequences…
 
+PHASE V:
+
+- IFF you are confident with your completion of prior phases
+(good comments? both partners equally competent? does it work?),
+Embellish as you like.
+- File this under `29_xtra` in your workshop.
+
 Guidelines:
 
 - Note anything notable.
