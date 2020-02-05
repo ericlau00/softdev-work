@@ -1,3 +1,9 @@
+// eric_squared
+// Eric "Morty" Lau, Eric "Rick" Lam
+// SoftDev1 pd<p>
+// K4 -- I See a Red Door...
+// 2020-02-05
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
