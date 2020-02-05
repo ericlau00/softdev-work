@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<!--
-    eric_squared
-    Eric "Morty" Lau, Eric "Rick" Lam
-    SoftDev1 pd1
-    K4 -- I See a Red Door...
-    2020-02-05
--->
+<!-- Team Eric² - Eric Lam & Eric Lau
+SoftDev2 pd1
+K04 -- I See a Red Door...
+2020-02-06 -->
 <html>
 
     <head>
         <style>
-            #canvas {
+            #slate {
                 border: 1px solid black;
             }
         </style>
+        <meta charset="UTF-8">
+        <title>Canvas</title>
     </head>
 
     <body>
-        <canvas height='300' width="300" id="canvas">
-
+        <canvas height='400' width='400' id='slate'>
+            alt text
         </canvas>
         <br>
-        <div>State: <span id="state"> </span></div>
-        <br>
+        <div>State: <span id="state">box</span></div>
+        <input type='color' id='colorSelector'>
         <button id='toggle'>
             Toggle
         </button>
         <button id='clear'>
             Clear
         </button>
+        <script src='clickdraw.js'></script>
     </body>
-    <script src='clickdraw.js'>
-    </script>
 
 </html>

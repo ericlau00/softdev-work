@@ -1,38 +1,41 @@
-// eric_squared
-// Eric "Morty" Lau, Eric "Rick" Lam
-// SoftDev1 pd1
-// K4 -- I See a Red Door...
-// 2020-02-05
+// Team Eric² - Eric "Rick" Lam & Eric "Morty" Lau
+// SoftDev2 pd1
+// K04 -- I See a Red Door...
+// 2020-02-06
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('slate');
+const context = canvas.getContext('2d');
 
-var state = 'box';
+const toggleButton = document.getElementById('toggle');
+const clearButton = document.getElementById('clear');
 
-const s = document.getElementById('state');
-s.innerHTML = state;
+const color = document.getElementById('colorSelector');
+const state = document.getElementById('state');
+
+const toggle = () => {
+    state.innerHTML = (state.innerHTML == 'box')
+        ? 'circle'
+        : 'box';
+}
+
+const clear = () => {
+    context.clearRect(0, 0, 400, 400);
+}
 
 const draw = (e) => {
-    if (state == 'box') {
-        ctx.fillRect(e.clientX, e.clientY, 50, 50);
+    x = e.clientX;
+    y = e.clientY;
+    context.fillStyle = color.value;
+    if (state.innerHTML == 'box') {
+        context.fillRect(x - 50, y - 50, 100, 100);
     } else {
-        ctx.beginPath();
-        ctx.arc(e.clientX, e.clientY, 25, 0, 2 * Math.PI);
-        ctx.stroke();
+        context.beginPath();
+        context.arc(x, y, 50, 0, 2 * Math.PI);
+        context.closePath();
+        context.fill();
     }
 }
 
 canvas.addEventListener('click', draw);
-
-const toggle = document.getElementById('toggle');
-toggle.addEventListener('click', () => {
-    state = (state == 'box')
-        ? 'circle'
-        : 'box';
-    s.innerHTML = state;
-});
-
-const clear = document.getElementById('clear');
-clear.addEventListener('click', () => {
-    ctx.clearRect(0, 0, 300, 300);
-});
+toggleButton.addEventListener('click', toggle);
+clearButton.addEventListener('click', clear);
