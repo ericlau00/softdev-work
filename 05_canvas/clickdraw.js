@@ -1,7 +1,7 @@
 // Team Eric² - Eric Lam & Eric Lau
 // SoftDev2 pd1
-// K04 -- I See a Red Door...
-// 2020-02-06
+// K05 -- I See a Red Door...
+// 2020-02-07
 
 const canvas = document.getElementById('slate');
 const context = canvas.getContext('2d');
@@ -44,9 +44,8 @@ var clear = () => {
 };
 
 var draw = (event) => {
-    var bounds = canvas.getBoundingClientRect();
-    x = event.clientX - bounds.left;
-    y = event.clientY - bounds.top;
+    x = event.offsetX;
+    y = event.offsetY;
     context.fillStyle = color.value;
     if (state) {
         context.fillRect(x - width / 2, y - height / 2, width, height);
