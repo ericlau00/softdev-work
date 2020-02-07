@@ -1,7 +1,12 @@
-// Team Eric² - Eric Lam & Eric Lau
+// Eric Lau
 // SoftDev2 pd1
 // K05 -- I See a Red Door...
 // 2020-02-07
+
+// offsetX gives the x distance in pixels between the mouse and the edge of the element.
+// offsetY gives the y distance in pixels between the mouse and the edge of the element.
+// beginPath starts a new path for which a stroke will be drawn.
+// preventDefault will prevent the default action of an element from occuring (e.g. inputting text in a text field)
 
 const canvas = document.getElementById('slate');
 const context = canvas.getContext('2d');
@@ -59,7 +64,7 @@ var draw = (event) => {
 
 toggleButton.addEventListener('click', toggle);
 clearButton.addEventListener('click', clear);
-canvas.addEventListener('click', draw );
+canvas.addEventListener('click', draw);
 
 heightSlider.oninput = () => {
     height = heightSlider.value;
