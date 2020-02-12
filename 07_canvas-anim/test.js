@@ -1,41 +1,56 @@
-// Eric Lau
-// SoftDev2 pd1
-// K07 -- They lock us in the tower whenever we get caught...
-// 2020-02-13
+// "ERIC EATS COWS" Eric Lau & William Cao
+// SoftDev1 pd1
+// K #07: They lock us in the tower whenever we get caught
+// 2020-02-12
 
 const canvas = document.getElementById('playground');
 const context = canvas.getContext('2d');
 const stopButton = document.getElementById('stop');
 const animateButton = document.getElementById('animate');
 
-var myRequest;
+/**
+ * The current frame the animation is at
+ * @type {number}
+ */
+let animationTime = 0;
+let isAnimationRunning = false;
 
-const draw = (radius) => {
+/**
+ * Used for canceling the animation.
+ */
+let animationID;
+
+const drawCircle = (radius) => {
     context.beginPath();
     context.arc(200, 200, radius, 0, 2 * Math.PI);
     context.closePath();
     context.fill();
-}
+};
 
-const draw = () => {
-    myRequest = window.requestAnimationFrame(animate);
-}
+const animate = () => {
+    animationTime++;
 
-const animate = (timestamp) => {
-    let radius = (timestamp / 10) % 400;
+    let radius = (animationTime) % 400;
     context.clearRect(0, 0, 400, 400);
     if (radius <= 200) {
-        draw(radius);
+        drawCircle(radius);
     } else {
-        draw(Math.abs(200 - radius - 200));
-        // draw(Math.abs(200 - timestamp % 200))
+        drawCircle(Math.abs(200 - radius + 200));
     }
-    myRequest = window.requestAnimationFrame(animate);
-}
+    animationID = window.requestAnimationFrame(animate);
+};
 
 const stop = () => {
-    window.cancelAnimationFrame(myRequest);
-}
+    window.cancelAnimationFrame(animationID);
+    isAnimationRunning = false;
+};
 
-animateButton.addEventListener('click', draw);
+const start = () => {
+    if(!isAnimationRunning){
+        animationID = window.requestAnimationFrame(animate);
+        isAnimationRunning = true;
+    }
+};
+
 stopButton.addEventListener('click', stop);
+animateButton.addEventListener('click', start);
