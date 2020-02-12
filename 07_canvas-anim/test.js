@@ -1,3 +1,8 @@
+// Eric Lau
+// SoftDev2 pd1
+// K07 -- They lock us in the tower whenever we get caught...
+// 2020-02-13
+
 const canvas = document.getElementById('playground');
 const context = canvas.getContext('2d');
 const stopButton = document.getElementById('stop');
@@ -12,7 +17,7 @@ const draw = (radius) => {
     context.fill();
 }
 
-const start = () => {
+const draw = () => {
     myRequest = window.requestAnimationFrame(animate);
 }
 
@@ -29,10 +34,8 @@ const animate = (timestamp) => {
 }
 
 const stop = () => {
-    console.log("here")
-    console.log(myRequest)
     window.cancelAnimationFrame(myRequest);
 }
 
+animateButton.addEventListener('click', draw);
 stopButton.addEventListener('click', stop);
-animateButton.addEventListener('click', start);
