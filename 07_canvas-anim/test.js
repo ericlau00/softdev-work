@@ -3,6 +3,8 @@ const context = canvas.getContext('2d');
 const stopButton = document.getElementById('stop');
 const animateButton = document.getElementById('animate');
 
+var myRequest;
+
 const draw = (radius) => {
     context.beginPath();
     context.arc(200, 200, radius, 0, 2 * Math.PI);
@@ -10,8 +12,8 @@ const draw = (radius) => {
     context.fill();
 }
 
-const start = (e) => {
-    window.requestAnimationFrame(animate);
+const start = () => {
+    myRequest = window.requestAnimationFrame(animate);
 }
 
 const animate = (timestamp) => {
@@ -23,7 +25,13 @@ const animate = (timestamp) => {
         draw(Math.abs(200 - radius - 200));
         // draw(Math.abs(200 - timestamp % 200))
     }
-    window.requestAnimationFrame(animate);
+    myRequest = window.requestAnimationFrame(animate);
+}
+
+const stop = () => {
+    console.log("here")
+    console.log(myRequest)
+    window.cancelAnimationFrame(myRequest);
 }
 
 stopButton.addEventListener('click', stop);
