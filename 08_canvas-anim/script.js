@@ -44,11 +44,6 @@ const drawCircle = (radius) => {
     context.fill();
 };
 
-const drawMovie = () => {
-    context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.drawImage(movieLogo, movieX, movieY, movieWidth, movieHeight);
-};
-
 const animateCircle = () => {
     animationFrame++;
 
@@ -62,6 +57,22 @@ const animateCircle = () => {
         drawCircle(Math.abs(200 - radius + 200));
     }
     animationID = window.requestAnimationFrame(animateCircle);
+};
+
+animateCircleButton.addEventListener('click', () => {
+    // Stop all other animation
+    stopAnimation();
+
+    // Start/continue the circle animation
+    if (animationMode !== "c") {
+        animationID = window.requestAnimationFrame(animateCircle);
+        animationMode = "c";
+    }
+});
+
+const drawMovie = () => {
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    context.drawImage(movieLogo, movieX, movieY, movieWidth, movieHeight);
 };
 
 const animateMovie = () => {
@@ -79,24 +90,6 @@ const animateMovie = () => {
 
     animationID = window.requestAnimationFrame(animateMovie);
 };
-
-const stopAnimation = () => {
-    window.cancelAnimationFrame(animationID);
-    animationMode = "";
-};
-
-stopButton.addEventListener('click', stopAnimation);
-
-animateCircleButton.addEventListener('click', () => {
-    // Stop all other animation
-    stopAnimation();
-
-    // Start/continue the circle animation
-    if (animationMode !== "c") {
-        animationID = window.requestAnimationFrame(animateCircle);
-        animationMode = "c";
-    }
-});
 
 animateMovieButton.addEventListener('click', () => {
     // Stop all other animation
@@ -116,3 +109,10 @@ animateMovieButton.addEventListener('click', () => {
         animationMode = "m";
     }
 });
+
+const stopAnimation = () => {
+    window.cancelAnimationFrame(animationID);
+    animationMode = "";
+};
+
+stopButton.addEventListener('click', stopAnimation);
