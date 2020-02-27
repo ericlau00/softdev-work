@@ -1,21 +1,32 @@
 from pymongo import MongoClient
-import json
+from bson.json_util import loads
 
 client = MongoClient('localhost', 27017)
 db = client.test_database
 
-collection = db.test_collection
+restaurants = db.restaurants
 
 file = open('primer-dataset.json', 'r').read().split('\n')
 
 items = list()
 
-for item in file:
-	items.append(json.loads(item.replace('$', '')))
+for item in file[:2]:
+	items.append(loads(item))
 
-result = collection.insert_many(items)
+result = restaurants.insert_many(items)
 
-# print(file[0], file[1])
-print(result.inserted_ids)
+def search_borough(borough):
+	query = restaurants.find({'borough': borough})
+	for restaurant in query:
+		print(restaurant['name'], restaurant['borough'])
+	return query 
 
-print(collection.count_documents({}))
+search_borough('Brooklyn')
+
+def search_zipcode(zipcode):
+	query = restaurants.find({'address.zipcode': zipcode})
+	for restaurant in query:
+		print(restaurant['name'], restaurant['address']['zipcode'])
+	return query 
+
+search_zipcode('11221')
