@@ -6,24 +6,18 @@ db = client.test_database
 
 restaurants = db.restaurants
 
-#file = open('primer-dataset.json', 'r').read().split('\n')
+def insert_data(file):
+	file = open(file, 'r').read().split('\n')
+	items = [loads(item) for item in file]
+	restaurants.insert_many(items)
 
-#items = [loads(item) for item in file]
-
-#result = restaurants.insert_many(items)
+# insert_data('primer-dataset.json')
 
 def search_borough(borough):
 	query = restaurants.find({'borough': borough})
 	return [restaurant for restaurant in query]
-	#result = list()
-	#for restaurant in query:
-	#	result.append(restaurant)
-	#return result
 
-#res = search_borough('Brooklyn')
-#print(res)
-#print(len(search_borough('Brooklyn')))
-#print(search_borough('Brooklyn')[:5])
+print(search_borough('Brooklyn')[:5])
 
 def search_zipcode(zipcode):
 	query = restaurants.find({'address.zipcode': zipcode})
@@ -39,3 +33,12 @@ def search_zipcode_grade(zipcode, grade):
 	return [restaurant for restaurant in query]
 
 print(search_zipcode_grade('11221', 'B')[:5])
+
+def search_zipcode_score(zipcode, score):
+	query = restaurants.find({
+		'address.zipcode': zipcode,
+		'grades': {'$elemMatch' : {'score' : {'$lt' : score}}}
+	})
+	return [restaurant for restaurant in query]
+
+print(search_zipcode_score('11221', 20)[:5])
