@@ -19,6 +19,7 @@ def insert_data(file):
 	items = [loads(item) for item in file]
 	restaurants.insert_many(items)
 
+print("Inserting data...\n")
 insert_data('primer-dataset.json')
 
 # search all restaurants in in a given borough
@@ -26,14 +27,18 @@ def search_borough(borough):
     query = restaurants.find({'borough': borough})
     return [restaurant for restaurant in query]
 
-pprint(search_borough("Brooklyn")[:5])
+print("Restaurants in Brooklyn\n")
+pprint(search_borough("Brooklyn")[:4])
+print()
 
 # search all restaurants in a given zipcode
 def search_zipcode(zipcode):
     query = restaurants.find({'address.zipcode': zipcode})
     return [restaurant for restaurant in query]
 
-pprint(search_zipcode("11221")[:5])
+print("Restaurants with zipcode 11221\n")
+pprint(search_zipcode("11221")[:4])
+print()
 
 # search all restaurants in a given zipcode and has a given grade
 def search_zipcode_grade(zipcode, grade):
@@ -42,7 +47,9 @@ def search_zipcode_grade(zipcode, grade):
     )
     return [restaurant for restaurant in query]
 
-pprint(search_zipcode_grade("11221", "B")[:5])
+print("Restaurants with zipcode 11221 and grade B\n")
+pprint(search_zipcode_grade("11221", "B")[:4])
+print()
 
 # search all restaurants in a given zipcode with a score below a given threshold
 def search_zipcode_score(zipcode, score):
@@ -54,10 +61,12 @@ def search_zipcode_score(zipcode, score):
     )
     return [restaurant for restaurant in query]
 
-pprint(search_zipcode_score("11221", 20)[:5])
+print("Restaurants with zipcode 11221 and score below 20\n")
+pprint(search_zipcode_score("11221", 20)[:4])
+print()
 
-# search all restaurants within an x/y offset of the coordinates (73, 40) and a given date
-def search_coords_date(offset):
+# search all restaurants within an x/y offset of the coordinates (73, 40)
+def search_coords(offset):
     xlower = -1 * 73 - offset
     xupper = -1 * 73 + offset
     ylower = 40 - offset
@@ -70,4 +79,6 @@ def search_coords_date(offset):
     )
     return [restaurant for restaurant in query]
 
-pprint(search_coords_date(1)[:5])
+print("Restaurants within 1 unit of -73, 40\n")
+pprint(search_coords(1)[:4])
+print()
