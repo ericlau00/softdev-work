@@ -15,7 +15,7 @@ restaurants = db.restaurants
 restaurants.drop()
 
 def insert_data(file):
-	file = open(file, 'r').read().split('\n')
+	file = open(file, 'r').read().rstrip('\n').split('\n')
 	items = [loads(item) for item in file]
 	restaurants.insert_many(items)
 
