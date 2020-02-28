@@ -65,8 +65,8 @@ print("Restaurants with zipcode 11221 and score below 20\n")
 pprint(search_zipcode_score("11221", 20)[:4])
 print()
 
-# search all restaurants within an x/y offset of the coordinates (73, 40) and a given date
-def search_coords_date(offset):
+# search all restaurants within an x/y offset of the coordinates (73, 40)
+def search_coords(offset):
     xlower = -1 * 73 - offset
     xupper = -1 * 73 + offset
     ylower = 40 - offset
@@ -80,5 +80,5 @@ def search_coords_date(offset):
     return [restaurant for restaurant in query]
 
 print("Restaurants within 1 unit of -73, 40\n")
-pprint(search_coords_date(1)[:4])
+pprint(search_coords(1)[:4])
 print()
