@@ -8,10 +8,13 @@ name: 200,000+ Jeopardy! Questions JSON
 description: a JSON file containing 216,930 Jeopardy questions, answers, and other data.
 hyperlink: https://drive.google.com/file/d/0BwT5wj_P7BKXb2hfM3d2RHU1ckE/view?usp=sharing
 import mechanism:
+open the file and use json.load which can read directly from the file to
+create a list of dictionaries. for every dictionary in the list, insert
+that dictionary into the database.
 '''
 
-from bson.json_util import loads
 from pymongo import MongoClient
+import json
 
 client = MongoClient("localhost", 27017)
 quiz = client.jeopardy.quiz
@@ -19,10 +22,15 @@ quiz = client.jeopardy.quiz
 
 def insertData(filename):
     file = open(filename, "r")
-    doc = file.readlines()
-    for line in doc:
-        print(line)
-        # quiz.insert_one(loads(line))
+    doc = json.load(file)
+    print(doc[0])
+    # for line in doc[0]:
+    #     print(line)
+        # quiz.insert_one(line)
+
+
+def deleteData():
+    quiz.delete_many({})
 
 
 def findTopic(q):
@@ -53,6 +61,7 @@ def doubleJeopardy():
 print("\nInserting data\n")
 
 insertData("teamname.json")
+# deleteData()
 
 # print("\nPrinting category of a question\n")
 
