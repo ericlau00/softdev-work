@@ -5,7 +5,7 @@
 
 '''
 name: 200,000+ Jeopardy! Questions JSON
-description: a JSON file containing 216,930 Jeopardy questions, answers, and other data.
+description: a JSON file containing 216,930 Jeopardy questions, answers, and their category, air-date, and other data.
 hyperlink: https://drive.google.com/file/d/0BwT5wj_P7BKXb2hfM3d2RHU1ckE/view?usp=sharing
 import mechanism:
 Manually remove a lot of the data in the JSON file because there is too much data!
@@ -34,7 +34,7 @@ def questionWorth(q):
 
 
 def price(p):
-    p = f"${p}"
+    p = "$"+str(p)
     return quiz.find({"value": p}, {"question": 1, "_id": 0})
 
 
@@ -43,7 +43,7 @@ def category(c):
 
 
 def answer(q):
-    return quiz.find({"question": f"'{q}'"}, {"answer": 1, "_id": 0})
+    return quiz.find({"question": q}, {"answer": 1, "_id": 0})
 
 
 def doubleJeopardy():
