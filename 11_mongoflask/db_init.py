@@ -8,7 +8,7 @@ import json
 
 client = MongoClient("localhost", 27017)
 quiz = client['sitedata'].jeopardy
-schools = client['sitedata'].grad_results
+grad = client['sitedata'].grad_results
 
 def insert_jeopardy():
     '''inserts contents of jeopardy.json into db.sitedata.jeopardy'''
@@ -20,11 +20,11 @@ def insert_jeopardy():
 
 def insert_grad_results():
     '''inserts contents of grad_results.json into db.sitedata.grad_results'''
-    schools.drop()
+    grad.drop()
     with open("grad_results.json", 'r') as datafile:
         data = json.loads(datafile.read())
     for record in data:
-        schools.insert_one(record)
+        grad.insert_one(record)
 
 insert_jeopardy()
 insert_grad_results()
