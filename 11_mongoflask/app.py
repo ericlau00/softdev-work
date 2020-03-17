@@ -30,11 +30,14 @@ def results():
 			data[0] = data[0][3:]
 			print(f'Querying jeopardy questions dataset for {data[0]}, with value {data[1]}')
 			# query jeapordy dataset
-			data = my_mongo.quiz_find({data[0]: data[1]})
+			if data[0] == "value":
+				data = my_mongo.quiz_find({data[0]: f"${data[1]}"})
+			else:
+				data = my_mongo.quiz_find({data[0]: data[1]})
 		return render_template('results.html', data=data)
 
 application = app
 if __name__ == '__main__':
-    db_init.insert_jeopardy()
-    db_init.insert_grad_results()
-    app.run(debug=True)
+			db_init.insert_jeopardy()
+			db_init.insert_grad_results()
+			app.run(debug=True)
