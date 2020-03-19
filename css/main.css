@@ -4,10 +4,16 @@
     background-image: url('../img/flutter_logo.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(200, 200, 200, 0.5);
     background-size: contain;
 }
 
 body {
+    background-color: rgba(200, 200, 200, 0.5);
     font-family: 'Montserrat';
+}
+
+@media print {
+    body {
+        background-color: white;
+    }
 }
