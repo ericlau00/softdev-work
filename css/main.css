@@ -7,6 +7,13 @@
     background-size: contain;
 }
 
+#dart {
+    background-image: url('../img/dart_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 body {
     background-color: rgba(200, 200, 200, 0.5);
     font-family: 'Montserrat';
