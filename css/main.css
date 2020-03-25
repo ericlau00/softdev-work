@@ -105,3 +105,9 @@ a, a:hover, a:focus, a:visited, a:active {
     width: 80%;
     height: 80%;
 }
+
+#flutter_command {
+    display: inline;
+    font-family: 'Courier';
+}
+
