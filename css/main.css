@@ -1,22 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
-#landing {
-    background-image: url('../img/flutter_logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-#dart {
-    background-image: url('../img/dart_logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
-p {
-    font-size: 1.3rem;
-}
 body {
     background-color: rgba(154, 189, 235, 0.938);
     font-family: 'Rubik', sans-serif;
@@ -28,6 +22,25 @@ body {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
+}
+
+a, a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.highlight {
+    border-bottom: 3px solid;
+    color: black;
 }
 
 .h1{
@@ -46,20 +59,18 @@ body {
     font-size: 2.1rem;
 }
 
-html {
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+#landing {
+    background-image: url('../img/flutter_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
-iframe {
-    width: 100%;
-    height: 400px;
-}
-
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+#dart {
+    background-image: url('../img/dart_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 @media print {
