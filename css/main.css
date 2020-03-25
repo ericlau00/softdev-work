@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+.noselect {
+    -webkit-touch-callout: default; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
 
 #landing {
     background-image: url('../img/flutter_logo.png');
@@ -15,8 +25,36 @@
 }
 
 body {
-    background-color: rgba(200, 200, 200, 0.5);
-    font-family: 'Montserrat';
+    background-color: rgba(154, 189, 235, 0.938);
+    font-family: 'Rubik', sans-serif;
+    font-size: small;
+}
+
+.h1{
+    font-size: 3.5rem;
+}
+
+.h2 {
+    font-size: 2.6rem;
+}
+
+.h4{
+    font-size: 2.4rem;
+}
+
+.h5{
+    font-size: 2.1rem;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 @media print {
