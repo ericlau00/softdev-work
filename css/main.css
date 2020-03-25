@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
 :root {
+    --github-color: rgba(0,0,0,0.5);
     --dartpad-color: rgba(43, 182, 246, 0.7);
     --youtube-color: rgba(255, 0, 0, 0.5);
     --flutter-color: rgba(10, 92, 156, 0.7);
@@ -55,6 +56,10 @@ a, a:hover, a:focus, a:visited, a:active {
 }
 
 .h2 {
+    font-size: 3rem;
+}
+
+.h3 {
     font-size: 2.7rem;
 }
 
