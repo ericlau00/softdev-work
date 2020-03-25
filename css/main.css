@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
-.noselect {
-    -webkit-touch-callout: default; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Opera and Firefox */
-}
-
 #landing {
     background-image: url('../img/flutter_logo.png');
     background-repeat: no-repeat;
@@ -24,10 +14,20 @@
     background-size: contain;
 }
 
+p {
+    font-size: 1.3rem;
+}
 body {
     background-color: rgba(154, 189, 235, 0.938);
     font-family: 'Rubik', sans-serif;
     font-size: small;
+    -webkit-touch-callout: default; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }
 
 .h1{
