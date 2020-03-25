@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
+:root {
+    --dartpad-color: rgba(43, 182, 246, 0.7);
+    --youtube-color: rgba(255, 0, 0, 0.5);
+    --flutter-color: rgba(10, 92, 156, 0.7);
+    --dart-color: rgba(0, 204, 179, 0.7);
+    --academind-color: rgba(251, 146, 63, 0.7);
+}
+
 html {
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -61,13 +69,6 @@ a, a:hover, a:focus, a:visited, a:active {
 
 #landing {
     background-image: url('../img/flutter_logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-#dart {
-    background-image: url('../img/dart_logo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
