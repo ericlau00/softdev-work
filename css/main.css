@@ -20,7 +20,6 @@ html {
 }
 
 body {
-    background-color: rgba(154, 189, 235, 0.938);
     font-family: 'Rubik', sans-serif;
     font-size: small;
     -webkit-touch-callout: default; /* iOS Safari */
@@ -33,7 +32,7 @@ body {
 }
 
 p {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 iframe {
@@ -52,19 +51,23 @@ a, a:hover, a:focus, a:visited, a:active {
 }
 
 .h1{
-    font-size: 3.5rem;
+    font-size: 3.6rem;
 }
 
 .h2 {
-    font-size: 2.6rem;
+    font-size: 2.7rem;
 }
 
 .h4{
-    font-size: 2.4rem;
+    font-size: 2.5rem;
 }
 
 .h5{
-    font-size: 2.1rem;
+    font-size: 2.2rem;
+}
+
+.gist {
+    display: none;
 }
 
 #landing {
@@ -77,5 +80,14 @@ a, a:hover, a:focus, a:visited, a:active {
 @media print {
     body {
         background-color: white;
+    }
+
+    iframe {
+        display: none;
+    }
+
+    .gist {
+        display: block;
+        word-wrap: break-word;
     }
 }
