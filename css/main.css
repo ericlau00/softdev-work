@@ -90,4 +90,8 @@ a, a:hover, a:focus, a:visited, a:active {
         display: block;
         word-wrap: break-word;
     }
+
+    .highlight {
+        border-bottom: none;
+    }
 }
