@@ -100,3 +100,8 @@ a, a:hover, a:focus, a:visited, a:active {
         border-bottom: none;
     }
 }
+
+#trees_image {
+    width: 80%;
+    height: 80%;
+}
