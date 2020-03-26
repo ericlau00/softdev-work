@@ -72,7 +72,13 @@ a, a:hover, a:focus, a:visited, a:active {
 }
 
 .gist {
-    display: none;
+    display: block;
+    word-wrap: break-word;
+}
+
+.icon {
+    max-width: 1.5rem;
+    height: auto;
 }
 
 #landing {
@@ -80,25 +86,6 @@ a, a:hover, a:focus, a:visited, a:active {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-}
-
-@media print {
-    body {
-        background-color: white;
-    }
-
-    iframe {
-        display: none;
-    }
-
-    .gist {
-        display: block;
-        word-wrap: break-word;
-    }
-
-    .highlight {
-        border-bottom: none;
-    }
 }
 
 #trees_image {
@@ -111,3 +98,24 @@ a, a:hover, a:focus, a:visited, a:active {
     font-family: 'Courier';
 }
 
+@media print {
+    body {
+        background-color: white;
+    }
+
+    iframe {
+        display: none;
+    }
+
+    .highlight {
+        border-bottom: none;
+    }
+
+    .dart-tabs {
+        display: none;
+    }
+
+    .dart-raw {
+        display: block !important;
+    }
+}
