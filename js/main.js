@@ -1,5 +1,5 @@
 
-let links = ['github', 'dartpad', 'youtube', 'flutter', 'dart', 'academind'];
+let links = ['flutter-web', 'github', 'dartpad', 'youtube', 'flutter', 'dart', 'academind'];
 
 for (let i = 0; i < links.length; i++) {
     let el = `#${links[i]}`
