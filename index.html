@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <div class="container-fluid vh-100" id="landing">
+        <div class="container-fluid vh-100 page-break-after" id="landing">
             <div class="row min-vh-100 justify-content-center align-items-center">
                 <div class="col-12 text-center">
                     <div class="h1"><b>FLUTTER PRESENTATION</b></div>
@@ -26,7 +26,7 @@
         <div class="container-fluid px-5">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-                    <div class="h2"><b>Story</b></div>
+                    <div class="h2" style="padding-top: 0;"><b>Story</b></div>
                     <p>
                         Imagine that you want to create a mobile app and you want to cater
                         your app to both Android and iOS devices. You would need to develop
@@ -36,10 +36,8 @@
                         lot of time and effort. So, what is Flutter?
                     </p>
                 </div>
-            </div>
-            <div class="h2"><b>What is Flutter?</b></div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>What is Flutter?</b></div>
                     <p>
                         Flutter is a software development kit (SDK) made by Google to
                         develop mobile apps. It is a framework written in Dart, a
@@ -51,15 +49,13 @@
                                 project on GitHub.</a></span>
                     </p>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>Why Flutter?</b></div>
                     <p>
                         There are so many different options out there to consider when
                         wanting to develop a mobile app. You could write native apps with
                         Java/Kotlin or Swift/Objective-C, native-like apps with React
-                        Native, or hybrid apps with Ionic or PhoneGap. So why use Flutter?
+                        Native, or hybrid apps with Ionic or PhoneGap. Why use Flutter?
                     </p>
                     <div class="h4"><b>Because Flutter is...</b></div>
                     <div class="pl-5">
@@ -107,10 +103,8 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-                    <div class="h2"><b>Why does Flutter use Dart?</b></div>
+                    <div class="h2 page-break-before"><b>Why does Flutter use Dart?</b></div>
                     <p>
                         Dart was a relatively obscure language before the advent of Flutter.
                         However, because of Flutter's popularity,
@@ -151,8 +145,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>Dart Demo</b></div>
                     <p>The following contains code for a basic Dart program.</p>
@@ -196,7 +188,7 @@
                                 <script
                                     src="https://gist.github.com/ericlau00/69db60090994dfe94e67143c3435f03f.js"></script>
                             </div>
-                            <div class="tab-pane fade show" id="pills-raw" role="tabpanel"
+                            <div class="tab-pane fade show d-print-block" id="pills-raw" role="tabpanel"
                                 aria-labelledby="pills-raw-tab">
                                 <pre class="dart-raw">
                                     <code>
@@ -232,7 +224,7 @@ main() {
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>How to Flutter</b></div>
                     <p>
@@ -257,8 +249,8 @@ main() {
                     </div>
                 </div>
             </div>
-            <div class="row mb-5 pb-5">
-                <img src="img/dom_and_widget_trees.png" alt="Flutter Widget tree and HTML DOM tree"></img>
+            <div class="page-break-before row mb-5 pb-5">
+                <img src="img/dom_and_widget_trees.png" width="100%" alt="Flutter Widget tree and HTML DOM tree"></img>
             </div>
             <div class="row mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
@@ -271,12 +263,12 @@ main() {
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <img src="img/shopping_cart_example.gif" alt="A shopping cart Flutter app example"></img>
+            <div class="row page-break-after">
+                <img src="img/shopping_cart_example.gif" width="100%" alt="A shopping cart Flutter app example"></img>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-                    <div class="pl-5">
+                    <div class="pl-5 mt-5">
                         <p><b>What is State?</b></p>
                         <p>
                             In Flutter, there are stateless and stateful widgets. Stateless widgets are widgets that do
@@ -305,7 +297,7 @@ main() {
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row page-break-before">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>Flutter Demo</b></div>
                     <div>
@@ -355,7 +347,7 @@ main() {
                                 <script
                                     src="https://gist.github.com/ericlau00/10f4a35611877b25631651a8bbdb5682.js"></script>
                             </div>
-                            <div class="tab-pane fade show" id="pills-rawf" role="tabpanel"
+                            <div class="tab-pane fade show d-print-block" id="pills-rawf" role="tabpanel"
                                 aria-labelledby="pills-rawf-tab">
                                 <pre class="dart-raw">
                                 <code>
@@ -364,6 +356,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget { // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -374,16 +367,21 @@ class MyApp extends StatelessWidget { // This widget is the root of your applica
 }
 
 class MyHomePage extends StatefulWidget {
+
   MyHomePage({Key key, this.title}) : super(key: key);
   // This class is the configuration for the state. It holds the values (in this case the title) provided by the parent (in this
   // case the App widget) and used by the build method of the State. Fields in a Widget subclass are always marked "final".
+
   final String title;
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State&lt;MyHomePage&gt; {
+
   int _counter = 0;
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -425,7 +423,7 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row page-break-before page-break-after">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                         <div class="h2"><b>Structure and Development</b></div>
                         <p>Now we can look at some basic commands to get Flutter apps up and running, as well as the
@@ -460,12 +458,10 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                         <div class="h2"><b>Walkthrough</b></div>
-                        <p>The following carousel shows the development process through Visual Studio Code, an IDE
-                            optimized for Flutter development.</p>
+                        <p>The following carousel shows the development process through Visual
+                            Studio Code, an IDE optimized for Flutter development.</p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-4">
                         <div id="flutter-walkthrough" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#flutter-walkthrough" data-slide-to="0" class="active"></li>
@@ -532,8 +528,6 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="row pt-4">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                         <div class="h2"><b>Resources</b></div>
                         <div class="pl-4">

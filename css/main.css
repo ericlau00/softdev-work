@@ -9,10 +9,11 @@
     --academind-color: rgba(251, 146, 63, 0.7);
 }
 
-html {
+body {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -61,6 +62,7 @@ a, a:hover, a:focus, a:visited, a:active {
 
 .h2 {
     font-size: 3.2rem;
+    padding-top: 1.2rem;
 }
 
 .h3 {
@@ -102,6 +104,16 @@ a, a:hover, a:focus, a:visited, a:active {
 }
 
 @media print {
+    .page-break-after {
+        clear: both;
+        page-break-after: always !important;
+    }
+
+    .page-break-before{
+        clear: both;
+        page-break-before: always !important;
+    }
+
     body {
         background-color: white;
     }
@@ -118,7 +130,13 @@ a, a:hover, a:focus, a:visited, a:active {
         display: none;
     }
 
-    .dart-raw {
-        display: block !important;
+    .carousel-indicators{
+        display: none !important;
     }
+
+    .carousel-item {
+        display: flex !important;
+        page-break-after:always !important;
+    }
+
 }
