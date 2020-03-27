@@ -235,40 +235,73 @@ main() {
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>How to Flutter</b></div>
+                    <p>
+                        Now that we've had a basic overview of the Dart programming language, we can start to look at
+                        what Flutter has to offer.
+                    </p>
+                    <div class="h4"><b>Basic Flutter Concepts</b></div>
                     <div class="pl-5">
-                        <p><b>Widgets!</b></p>
+                        <p><b>What are Widgets?</b></p>
                         <p>
-                            Everything in Flutter is made up of widgets. And it is the basic
-                            building block of any flutter app.
+                            Everything in Flutter is made up of widgets. A widget is similar to HTML elements like a div
+                            or a table. It is basically a UI component with its own set of layout rules and properties.
+                            An entire Flutter app is built by composing these widgets together in a cohesive manner.
+                            Once you enough of these widgets, you'll get what is called a widget tree.
                         </p>
-                        <p><b>What is a widget?</b></p>
+                        <p><b>Widget Tree</b></p>
                         <p>
-                            A widget is similar to HTML elements, like a div tag or a table tag.
-                            It is basically a UI component with its own set of layout rules and
-                            properties. An entire flutter app is built by composing these
-                            widgets together in a cohesive manner. Once you compose enough of
-                            these widgets, you’ll soon get what is called a widget tree.
-                        </p>
-                        <p><b>Widget tree</b></p>
-                        <p>
-                            Web pages have a DOM and Flutter has a Widget Tree. The DOM and the
+                            Web pages have a Document Object Model (DOM) and Flutter has a Widget Tree. The DOM and the
                             Widget Tree are very similar to one another. Widget tree describes how widgets are composed
-                            with each other.
+                            with each other. Below is an image showing the similarities between the two.
                         </p>
-                        <p><b>Flutter setup</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5 pb-5">
+                <img src="img/dom_and_widget_trees.png" alt="Flutter Widget tree and HTML DOM tree"></img>
+            </div>
+            <div class="row mt-5">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="pl-5">
                         <p>
-                            <p id="flutter_command">flutter create</p>
-                            <p>- makes starter flutter app </p>
+                            The following animation shows a simplified widgit tree for a more concrete app. It also
+                            introduces the concept of state management. Notice that when the user clicks add next to one
+                            of the items, that item is added to the cart.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <img src="img/shopping_cart_example.gif" alt="A shopping cart Flutter app example"></img>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="pl-5">
+                        <p><b>What is State?</b></p>
+                        <p>
+                            In Flutter, there are stateless and stateful widgets. Stateless widgets are widgets that do
+                            not change once the app is created. They can only hold information upon initialization. On
+                            the other hand, stateful widgets can hold information that changes over time. In the
+                            animation above, the cart is an example of a stateful widget because it holds information
+                            about what items the user wants to purchase. This information can change over time,
+                            requiring the user to set the state of the widget.
                         </p>
                         <p>
-                            <p id="flutter_command"> flutter run</p>
-                            <p>- runs the flutter app </p>
+                            Each <code>StatefulWidget</code> contains a <code>State</code> object which handles all
+                            changes to state. The <code>State</code> object holds functions that invoke a
+                            <code>setState</code> function.
                         </p>
-                        <div class="row">
-                            <img id="trees_image" src="img/dom_and_widget_trees.png"
-                                alt="Flutter Widget tree and HTML DOM tree"></img>
-                            <img src="img/shopping_cart_example.gif" alt="A shopping cart Flutter app example"></img>
-                        </div>
+                    </div>
+                    <div class="pl-5">
+                        <p><b>What is the Build Function?</b></p>
+                        <p>
+                            <code>build</code> is a function in every Flutter widget that is called as soon as the
+                            screen renders a widget. The <code>build</code> function should return a <code>Widget</code>
+                            (this can be a complicated tree or a simple widget). One thing to note about the
+                            <code>build</code> function is that it is called everytime state is set. Even though this
+                            means we may be rerendering an entire widget tree, Flutter is very optimized and this
+                            rerendering just takes a split second.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -278,7 +311,7 @@ main() {
                     <div>
                         <p>
                             The following contains code for the default Flutter app. It
-                            provides an overview of the build method, setting state, and some
+                            provides an overview of the build function, setting state, and some
                             basic widgets.
                         </p>
                         <p style="font-size: 1.3rem;">Depending on your browser, the DartPad and GitHub Gist tabs might
@@ -314,7 +347,7 @@ main() {
                                 aria-labelledby="pills-flutter-tab">
                                 <div>
                                     <iframe style="width:100%;height:600px;"
-                                        src="https://dartpad.dev/embed-dart.html?id=10f4a35611877b25631651a8bbdb5682&split=60&theme=light"></iframe>
+                                        src="https://dartpad.dev/embed-flutter.html?id=10f4a35611877b25631651a8bbdb5682&split=78&theme=light"></iframe>
                                 </div>
                             </div>
                             <div class="tab-pane fade show" id="pills-ghf" role="tabpanel"
