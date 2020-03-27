@@ -89,11 +89,16 @@ a, a:hover, a:focus, a:visited, a:active {
     font-size: 1.3rem;
 }
 
+.carousel-caption {
+    background-color:var(--flutter-color);
+}
+
 #landing {
     background-image: url('../img/flutter_logo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    height: 100vh;
 }
 
 @media print {

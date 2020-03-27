@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <div class="container-fluid h-100" id="landing">
+        <div class="container-fluid vh-100" id="landing">
             <div class="row min-vh-100 justify-content-center align-items-center">
                 <div class="col-12 text-center">
                     <div class="h1"><b>FLUTTER PRESENTATION</b></div>
@@ -432,7 +432,8 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                             directory structure of a basic Flutter app.</p>
                         <div class="h4"><b>How to run a Flutter app</b></div>
                         <div class="pl-4">
-                            <p><code>flutter create</code> - <span class="sub">instantiates the default Flutter app
+                            <p><code>flutter create &lt;app_name&gt;</code> - <span class="sub">instantiates the default
+                                    Flutter app
                                     (demoed above) in the current directory.</span></p>
                             <p><code>flutter run</code> - <span class="sub">runs the app in an emualtor or deploys the
                                     app to a mobile device.</span></p>
@@ -444,18 +445,95 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                         </div>
                         <div class="h4"><b>Directory Structure</b></div>
                         <div class="pl-4">
-                            <p><code>/android</code> and <code>/ios</code>- <span class="sub">contain files to run the
+                            <p><code>/android</code> and <code>/ios</code> - <span class="sub">contain files to run the
                                     app on Android and iOS devices.</span></p>
-                            <p><code>/test</code>- <span class="sub"> is where your test files go if you want to engage
+                            <p><code>/test</code> - <span class="sub"> is where your test files go if you want to engage
                                     in Test Driven Developemnt (TDD).</span></p>
-                            <p><code>/lib</code>- <span class="sub"> is where you will put all of your Dart files. You
+                            <p><code>/lib</code> - <span class="sub"> is where you will put all of your Dart files. You
                                     will spend most of your time in this folder.</span></p>
-                            <p><code>pubspec.yaml</code>- <span class="sub"> is the dependency file of your app. It will
+                            <p><code>pubspec.yaml</code> - <span class="sub"> is the dependency file of your app. It
+                                    will
                                     contain any packages, assets, images, fonts, etc. that you use.</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="h2"><b>Walkthrough</b></div>
+                        <p>The following carousel shows the development process through Visual Studio Code, an IDE
+                            optimized for Flutter development.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="flutter-walkthrough" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#flutter-walkthrough" data-slide-to="0" class="active"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="1"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="2"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="3"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="4"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="5"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="/img/flutter_create.png"
+                                        alt="Running flutter create">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Running <code>flutter create</code></h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/img/emulator.png"
+                                        alt="Starting the default Android Flutter emulator">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Starting the default Android Flutter emulator</h4>
+                                        <h5>In VSCode, this is done by clicking on "No Devices" in the lower right hand
+                                            corner.</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/img/emulator_0.png" alt="Flutter Android Emulator">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Flutter Android Emulator</h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/img/flutter_run.png" alt="Running flutter run">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Running <code>flutter run</code></h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/img/first_boot.png" alt="Launching the app">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Launching the app</code></h4>
+                                        <h5>Note the direction for hot reload and hot restart in the terminal.</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/img/change.png" alt="Hot Reloading">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Hot Reloading</code></h4>
+                                        <h5>We changed the color in the code and hot reloaded. Note that it only takes
+                                            around 4 seconds.</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#flutter-walkthrough" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#flutter-walkthrough" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                         <div class="h2"><b>Resources</b></div>
                         <div class="pl-4">
