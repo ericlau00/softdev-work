@@ -11,13 +11,17 @@
 
 html {
     scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 7px;
     background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dartpad-color);
 }
 
 body {
@@ -81,16 +85,15 @@ a, a:hover, a:focus, a:visited, a:active {
     height: auto;
 }
 
+.sub {
+    font-size: 1.3rem;
+}
+
 #landing {
     background-image: url('../img/flutter_logo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-}
-
-#flutter_command {
-    display: inline;
-    font-family: 'Courier';
 }
 
 @media print {

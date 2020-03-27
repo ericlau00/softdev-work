@@ -156,7 +156,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="h2"><b>Dart Demo</b></div>
                     <p>The following contains code for a basic Dart program.</p>
-                    <p style="font-size: 1.3rem;">Depending on your browser, the DartPad and GitHub Gist tabs might not
+                    <p class="sub">Depending on your browser, the DartPad and GitHub Gist tabs might not
                         work because they contain
                         <code>iframe</code> elements. Click <span class="highlight"><a
                                 href="https://dartpad.dev/69db60090994dfe94e67143c3435f03f"
@@ -248,7 +248,7 @@ main() {
                             An entire Flutter app is built by composing these widgets together in a cohesive manner.
                             Once you enough of these widgets, you'll get what is called a widget tree.
                         </p>
-                        <p><b>Widget Tree</b></p>
+                        <p><b>How are Widgets Organized?</b></p>
                         <p>
                             Web pages have a Document Object Model (DOM) and Flutter has a Widget Tree. The DOM and the
                             Widget Tree are very similar to one another. Widget tree describes how widgets are composed
@@ -314,7 +314,7 @@ main() {
                             provides an overview of the build function, setting state, and some
                             basic widgets.
                         </p>
-                        <p style="font-size: 1.3rem;">Depending on your browser, the DartPad and GitHub Gist tabs might
+                        <p class="sub">Depending on your browser, the DartPad and GitHub Gist tabs might
                             not work because they contain
                             <code>iframe</code> elements. Click <span class="highlight"><a
                                     href="https://dartpad.dev/10f4a35611877b25631651a8bbdb5682"
@@ -427,8 +427,38 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="h2"><b>Structure and Development</b></div>
+                        <p>Now we can look at some basic commands to get Flutter apps up and running, as well as the
+                            directory structure of a basic Flutter app.</p>
+                        <div class="h4"><b>How to run a Flutter app</b></div>
+                        <div class="pl-4">
+                            <p><code>flutter create</code> - <span class="sub">instantiates the default Flutter app
+                                    (demoed above) in the current directory.</span></p>
+                            <p><code>flutter run</code> - <span class="sub">runs the app in an emualtor or deploys the
+                                    app to a mobile device.</span></p>
+                            <p>An emulator can be created using Android Studio or Xcode. Both of these are integral to
+                                developing to support platform dependencies.</p>
+                            <p>A Flutter app can be deployed to an Android phone via USB once developer settings are
+                                enabled. iPhones have a more complicated system of securities but it is possible to
+                                deploy onto an iPhone as well.</p>
+                        </div>
+                        <div class="h4"><b>Directory Structure</b></div>
+                        <div class="pl-4">
+                            <p><code>/android</code> and <code>/ios</code>- <span class="sub">contain files to run the
+                                    app on Android and iOS devices.</span></p>
+                            <p><code>/test</code>- <span class="sub"> is where your test files go if you want to engage
+                                    in Test Driven Developemnt (TDD).</span></p>
+                            <p><code>/lib</code>- <span class="sub"> is where you will put all of your Dart files. You
+                                    will spend most of your time in this folder.</span></p>
+                            <p><code>pubspec.yaml</code>- <span class="sub"> is the dependency file of your app. It will
+                                    contain any packages, assets, images, fonts, etc. that you use.</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                         <div class="h2"><b>Resources</b></div>
-                        <div>
+                        <div class="pl-4">
                             <p>
                                 The
                                 <span class="highlight" id="github"><a href="https://github.com/flutter/flutter">Flutter
