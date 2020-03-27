@@ -139,4 +139,8 @@ a, a:hover, a:focus, a:visited, a:active {
         page-break-after:always !important;
     }
 
+    #flutter-walkthrough, #walkthrough-brief {
+        display: none;
+    }
+
 }
