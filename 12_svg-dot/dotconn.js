@@ -1,47 +1,40 @@
-// Eric Lau
+// Eric Lau and Pratham Rawat
 // SoftDev2 pd1
-// K16 -- Connect the Dots
-// 2020-03-30
+// K13 -- Ask Circles [Change || Die]
+// 2020-03-31
 
 var pic = document.getElementById("vimage");
 var clearButton = document.getElementById("clearButton");
-var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-var firstClick = true;
-var oldX = null;
-var oldY = null;
 
-pic.addEventListener("click", function (e) {
+pic.addEventListener("mouseup", function (e) {
     c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-
     c.setAttribute("cx", e.offsetX);
     c.setAttribute("cy", e.offsetY);
-    c.setAttribute("r", "5");
-    c.setAttribute("fill", "black");
-    c.setAttribute("stroke", "black");
-
+    c.setAttribute("r", "15");
+    c.setAttribute("fill", "blue");
+    c.setAttribute("stroke", "blue");
     pic.appendChild(c);
-
-    if (firstClick) {
-        firstClick = false;
-    } else {
-        var l = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
-        l.setAttribute("x1", oldX);
-        l.setAttribute("y1", oldY);
-        l.setAttribute("x2", e.offsetX);
-        l.setAttribute("y2", e.offsetY);
-        l.setAttribute("style", "stroke:black; stroke-width:1");
-
-        pic.appendChild(l);
-    }
-
-    oldX = e.offsetX;
-    oldY = e.offsetY;
+    c.addEventListener("mousedown", onCircleClick(e, c));
 });
 
+var onCircleClick = function (e, c) {
+    console.log("okay");
+    if (c.fill = "blue") {
+        c.setAttribute("fill", "cyan");
+        c.setAttribute("stroke", "cyan");
+    } else if (c.fill = "cyan") {
+        c.setAttribute("cx", Math.random() * 500);
+        c.setAttribute("cy", Math.random() * 500);
+        c.setAttribute("fill", "blue");
+        c.setAttribute("stroke", "blue");
+    }
+}
+
 clearButton.addEventListener("click", function (e) {
-    pic.innerHTML = "";
-    oldX = null;
-    oldY = null;
-    firstClick = true;
+    let fc = pic.firstChild;
+    while (fc) {
+        console.log("removing " + fc + "...");
+        pic.removeChild(fc);
+        fc = pic.firstChild;
+    }
 });
