@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Flutter TED Talk</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+
+    <body>
+        <div class="container-fluid vh-100 page-break-after" id="landing">
+            <div class="row min-vh-100 justify-content-center align-items-center">
+                <div class="col-12 text-center">
+                    <div class="h1"><b>FLUTTER PRESENTATION</b></div>
+                    <div class="h4"><b>by Big PairProgramming Energy</b></div>
+                    <div class="h5">
+                        <b>Eric 'Morty' Lau and Raymond 'ray. lee.' Lee</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-5">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2" style="padding-top: 0;"><b>Story</b></div>
+                    <p>
+                        Imagine that you want to create a mobile app and you want to cater
+                        your app to both Android and iOS devices. You would need to develop
+                        two separate apps, one for the Google Play Store and one for the iOS
+                        App Store. But with Flutter, you would be able to develop under one
+                        codebase and still cater to both mobile markets, which saves you a
+                        lot of time and effort. So, what is Flutter?
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>What is Flutter?</b></div>
+                    <p>
+                        Flutter is a software development kit (SDK) made by Google to
+                        develop mobile apps. It is a framework written in Dart, a
+                        programming language created by Google in 2011. Flutter is a
+                        relatively new framework; its stable 1.0 version was released in
+                        December 2018. Despite being new, it has a very active community.
+                        <span class="highlight"><a href="https://octoverse.github.com/#top-and-trending-projects">In
+                                2018 - 2019, Flutter was the third most popular and second fastest growing open source
+                                project on GitHub.</a></span>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>Why Flutter?</b></div>
+                    <p>
+                        There are so many different options out there to consider when
+                        wanting to develop a mobile app. You could write native apps with
+                        Java/Kotlin or Swift/Objective-C, native-like apps with React
+                        Native, or hybrid apps with Ionic or PhoneGap. Why use Flutter?
+                    </p>
+                    <div class="h4"><b>Because Flutter is...</b></div>
+                    <div class="pl-5">
+                        <p><b>written in one codebase</b></p>
+                        <p>
+                            Since Flutter is a cross-platform framework, its Dart-based
+                            codebase would help you build mobile apps for both iOS & Android
+                            at once. So with Flutter development, you essentially have a
+                            single app that can be used successfully on multiple platforms.
+                        </p>
+                        <p><b>open-source and free</b></p>
+                        <p>
+                            There is an active community that contributes to the Flutter
+                            source code on its GitHub repository, helping the dev team fix
+                            bugs and suggest improvements.
+                        </p>
+                        <p><b>extremely fast in performance</b></p>
+                        <p>
+                            Native apps written in Java/Kotlin for Android or
+                            Swift/Objective-C for iOS have the best performance on their
+                            respective platforms and they also have full access to the phone's
+                            instruments (e.g. camera, microphone, etc.). Flutter is a
+                            native-like framework that compiles down into code that runs at
+                            speeds close to native apps.
+                        </p>
+                        <p><b>extremely fast to develop for</b></p>
+                        <p>
+                            There is a process in Flutter development known as hot reload.
+                            Imagine you are working on a Flask app and you fill out a long
+                            form and you realize it doesn't work for whatever reason. You make
+                            a change in your codebase and then you reload the entire app to
+                            see the changes. This doesn't have to be the case in Flutter. Once
+                            you make changes in your app, you can simply press a button
+                            (typically "r") on your keyboard and you get to see the changes
+                            within seconds and you also keep any state your app was in (e.g.
+                            filled in forms).
+                        </p>
+                        <p><b>beautiful</b></p>
+                        <p>
+                            Flutter comes with pre-made widgets and components for developers
+                            to use. These widgets can either be from a Material UI (Android)
+                            or Cupertino (iOS) library. However, the developer has flexibility
+                            to create their own style of widgets because Flutter is so
+                            malleable.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2 page-break-before"><b>Why does Flutter use Dart?</b></div>
+                    <p>
+                        Dart was a relatively obscure language before the advent of Flutter.
+                        However, because of Flutter's popularity,
+                        <span class="highlight"><a href="https://octoverse.github.com/#top-languages">Dart became the
+                                fastest growing language on GitHub during 2018
+                                - 2019</a></span>. So why does Flutter use Dart?
+                    </p>
+                    <div class="h4"><b>Because Dart is...</b></div>
+                    <div class="pl-5">
+                        <p><b>an Object Oriented Programming (OOP) language</b></p>
+                        <p>
+                            Everything in Dart can be made into a class or object. This is
+                            important for Flutter because Flutter uses classes and inheritance
+                            for all of its widgets.
+                        </p>
+                        <p><b>an Ahead of Time (AOT) compiled language</b></p>
+                        <p>
+                            This means that Dart code is compiled into native-like machine
+                            code that runs incredibly quickly on iOS or Android devices, as if
+                            you were actually programming in Java or Swift.
+                        </p>
+                        <p><b>a Just in Time (JIT) compiled language</b></p>
+                        <p>
+                            This means that Dart code can be compiled as it is being executed.
+                            This is important for the quick development process with hot
+                            reload and hot restart.
+                        </p>
+                        <p><b>similar to JavaScript</b></p>
+                        <p>
+                            Dart is in the C family in terms of syntax, and has a lot of
+                            crossover with JavaScript and is easy to learn.
+                        </p>
+                        <p><b>dynamically and statically typed</b></p>
+                        <p>
+                            Dart is also a good bridge for JavaScript users because it allows
+                            for dynamic typing, but is also safer than JavaScript because it
+                            also supports static typing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>Dart Demo</b></div>
+                    <p>The following contains code for a basic Dart program.</p>
+                    <p class="sub">Depending on your browser, the DartPad and GitHub Gist tabs might not
+                        work because they contain
+                        <code>iframe</code> elements. Click <span class="highlight"><a
+                                href="https://dartpad.dev/69db60090994dfe94e67143c3435f03f"
+                                target="_blank">here</a></span> to interact with the DartPad in another tab.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <ul class="nav nav-pills dart-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-dart-tab" data-toggle="pill" href="#pills-dart"
+                                    role="tab" aria-controls="pills-dart" aria-selected="true"><img class="pr-1 icon"
+                                        src="img/dartpad_logo.png"> DartPad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-gh-tab" data-toggle="pill" href="#pills-gh" role="tab"
+                                    aria-controls="pills-gh" aria-selected="false"><img class="pr-1 icon"
+                                        src="img/github_logo.png"> GitHub Gist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-raw-tab" data-toggle="pill" href="#pills-raw" role="tab"
+                                    aria-controls="pills-raw" aria-selected="false"><b><code>&lt;/&gt;</code></b>
+                                    Raw</a>
+                            </li>
+                        </ul>
+                        <div class="mt-3 tab-content" id="pills-content">
+                            <div class="tab-pane fade show active" id="pills-dart" role="tabpanel"
+                                aria-labelledby="pills-dart-tab">
+                                <div>
+                                    <iframe style="width:100%;height:600px;"
+                                        src="https://dartpad.dev/embed-dart.html?id=69db60090994dfe94e67143c3435f03f&split=60&theme=light"></iframe>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="pills-gh" role="tabpanel"
+                                aria-labelledby="pills-gh-tab">
+                                <script
+                                    src="https://gist.github.com/ericlau00/69db60090994dfe94e67143c3435f03f.js"></script>
+                            </div>
+                            <div class="tab-pane fade show d-print-block" id="pills-raw" role="tabpanel"
+                                aria-labelledby="pills-raw-tab">
+                                <pre class="dart-raw">
+                                    <code>
+import 'dart:math';
+
+class Point {
+    int x;
+    int y;
+
+    Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+    }
+
+    String toString() {
+    return "($x, $y)";
+    }
+
+    double distance(Point other) {
+    return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
+    }
+}
+
+main() {
+    Point point = new Point(1,2);
+    Point other = new Point(10, 4);
+
+    print("Distance between $point and $other is ${point.distance(other)}");
+}</code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>How to Flutter</b></div>
+                    <p>
+                        Now that we've had a basic overview of the Dart programming language, we can start to look at
+                        what Flutter has to offer.
+                    </p>
+                    <div class="h4"><b>Basic Flutter Concepts</b></div>
+                    <div class="pl-5">
+                        <p><b>What are Widgets?</b></p>
+                        <p>
+                            Everything in Flutter is made up of widgets. A widget is similar to HTML elements like a div
+                            or a table. It is basically a UI component with its own set of layout rules and properties.
+                            An entire Flutter app is built by composing these widgets together in a cohesive manner.
+                            Once you enough of these widgets, you'll get what is called a widget tree.
+                        </p>
+                        <p><b>How are Widgets Organized?</b></p>
+                        <p>
+                            Web pages have a Document Object Model (DOM) and Flutter has a Widget Tree. The DOM and the
+                            Widget Tree are very similar to one another. Widget tree describes how widgets are composed
+                            with each other. Below is an image showing the similarities between the two.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="page-break-before row mb-5 pb-5">
+                <img src="img/dom_and_widget_trees.png" width="100%" alt="Flutter Widget tree and HTML DOM tree"></img>
+            </div>
+            <div class="row mt-5">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="pl-5">
+                        <p>
+                            The following animation shows a simplified widgit tree for a more concrete app. It also
+                            introduces the concept of state management. Notice that when the user clicks add next to one
+                            of the items, that item is added to the cart.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row page-break-after">
+                <img src="img/shopping_cart_example.gif" width="100%" alt="A shopping cart Flutter app example"></img>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="pl-5 mt-5">
+                        <p><b>What is State?</b></p>
+                        <p>
+                            In Flutter, there are stateless and stateful widgets. Stateless widgets are widgets that do
+                            not change once the app is created. They can only hold information upon initialization. On
+                            the other hand, stateful widgets can hold information that changes over time. In the
+                            animation above, the cart is an example of a stateful widget because it holds information
+                            about what items the user wants to purchase. This information can change over time,
+                            requiring the user to set the state of the widget.
+                        </p>
+                        <p>
+                            Each <code>StatefulWidget</code> contains a <code>State</code> object which handles all
+                            changes to state. The <code>State</code> object holds functions that invoke a
+                            <code>setState</code> function.
+                        </p>
+                    </div>
+                    <div class="pl-5">
+                        <p><b>What is the Build Function?</b></p>
+                        <p>
+                            <code>build</code> is a function in every Flutter widget that is called as soon as the
+                            screen renders a widget. The <code>build</code> function should return a <code>Widget</code>
+                            (this can be a complicated tree or a simple widget). One thing to note about the
+                            <code>build</code> function is that it is called everytime state is set. Even though this
+                            means we may be rerendering an entire widget tree, Flutter is very optimized and this
+                            rerendering just takes a split second.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row page-break-before">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="h2"><b>Flutter Demo</b></div>
+                    <div>
+                        <p>
+                            The following contains code for the default Flutter app. It
+                            provides an overview of the build function, setting state, and some
+                            basic widgets.
+                        </p>
+                        <p class="sub">Depending on your browser, the DartPad and GitHub Gist tabs might
+                            not work because they contain
+                            <code>iframe</code> elements. Click <span class="highlight"><a
+                                    href="https://dartpad.dev/10f4a35611877b25631651a8bbdb5682"
+                                    target="_blank">here</a></span> to interact with the DartPad in another tab.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <ul class="nav nav-pills dart-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-flutter-tab" data-toggle="pill"
+                                    href="#pills-flutter" role="tab" aria-controls="pills-flutter"
+                                    aria-selected="true"><img class="pr-1 icon" src="img/dartpad_logo.png"> DartPad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-ghf-tab" data-toggle="pill" href="#pills-ghf" role="tab"
+                                    aria-controls="pills-ghf" aria-selected="false"><img class="pr-1 icon"
+                                        src="img/github_logo.png"> GitHub Gist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-rawf-tab" data-toggle="pill" href="#pills-rawf" role="tab"
+                                    aria-controls="pills-rawf" aria-selected="false"><b><code>&lt;/&gt;</code></b>
+                                    Raw</a>
+                            </li>
+                        </ul>
+                        <div class="mt-3 tab-content" id="pills-content">
+                            <div class="tab-pane fade show active" id="pills-flutter" role="tabpanel"
+                                aria-labelledby="pills-flutter-tab">
+                                <div>
+                                    <iframe style="width:100%;height:600px;"
+                                        src="https://dartpad.dev/embed-flutter.html?id=10f4a35611877b25631651a8bbdb5682&split=78&theme=light"></iframe>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="pills-ghf" role="tabpanel"
+                                aria-labelledby="pills-ghf-tab">
+                                <script
+                                    src="https://gist.github.com/ericlau00/10f4a35611877b25631651a8bbdb5682.js"></script>
+                            </div>
+                            <div class="tab-pane fade show d-print-block" id="pills-rawf" role="tabpanel"
+                                aria-labelledby="pills-rawf-tab">
+                                <pre class="dart-raw">
+                                <code>
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget { // This widget is the root of your application.
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+
+  MyHomePage({Key key, this.title}) : super(key: key);
+  // This class is the configuration for the state. It holds the values (in this case the title) provided by the parent (in this
+  // case the App widget) and used by the build method of the State. Fields in a Widget subclass are always marked "final".
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title), // Here we take the value from the MyHomePage object and use it to set our appbar title.
+      ),
+      body: Center( // Center is a layout widget. It takes a single child and positions it in the middle of the parent.
+        child: Column(
+          // Column is also layout widget. It takes a list of children and arranges them vertically. By default, it sizes itself
+          // to fit its children horizontally, and tries to be as tall as its parent. Column has various properties to control
+          // how it sizes itself and how it positions its children. Here we use mainAxisAlignment to center the children
+          // vertically; the main axis here is the vertical axis because Columns are vertical (the cross axis would be horizontal).
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}</code>
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row page-break-before page-break-after">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="h2"><b>Structure and Development</b></div>
+                        <p>Now we can look at some basic commands to get Flutter apps up and running, as well as the
+                            directory structure of a basic Flutter app.</p>
+                        <div class="h4"><b>How to run a Flutter app</b></div>
+                        <div class="pl-4">
+                            <p><code>flutter create &lt;app_name&gt;</code> - <span class="sub">instantiates the default
+                                    Flutter app
+                                    (demoed above) in the current directory.</span></p>
+                            <p><code>flutter run</code> - <span class="sub">runs the app in an emualtor or deploys the
+                                    app to a mobile device.</span></p>
+                            <p>An emulator can be created using Android Studio or Xcode. Both of these are integral to
+                                developing to support platform dependencies.</p>
+                            <p>A Flutter app can be deployed to an Android phone via USB once developer settings are
+                                enabled. iPhones have a more complicated system of securities but it is possible to
+                                deploy onto an iPhone as well.</p>
+                        </div>
+                        <div class="h4"><b>Directory Structure</b></div>
+                        <div class="pl-4">
+                            <p><code>/android</code> and <code>/ios</code> - <span class="sub">contain files to run the
+                                    app on Android and iOS devices.</span></p>
+                            <p><code>/test</code> - <span class="sub"> is where your test files go if you want to engage
+                                    in Test Driven Developemnt (TDD).</span></p>
+                            <p><code>/lib</code> - <span class="sub"> is where you will put all of your Dart files. You
+                                    will spend most of your time in this folder.</span></p>
+                            <p><code>pubspec.yaml</code> - <span class="sub"> is the dependency file of your app. It
+                                    will
+                                    contain any packages, assets, images, fonts, etc. that you use.</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="walkthrough-brief" class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="h2"><b>Walkthrough</b></div>
+                        <p>The following carousel shows the development process through Visual
+                            Studio Code, an IDE optimized for Flutter development.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-4">
+                        <div id="flutter-walkthrough" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#flutter-walkthrough" data-slide-to="0" class="active"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="1"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="2"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="3"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="4"></li>
+                                <li data-target="#flutter-walkthrough" data-slide-to="5"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="img/flutter_create.png"
+                                        alt="Running flutter create">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Running <code>flutter create</code></h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="img/emulator_launch.png"
+                                        alt="Starting the default Android Flutter emulator">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Starting the default Android Flutter emulator</h4>
+                                        <h5>In VSCode, this is done by clicking on "No Devices" in the lower right hand
+                                            corner.</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="img/emulator_visible.png" alt="Flutter Android Emulator">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Flutter Android Emulator</h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="img/flutter_run.png" alt="Running flutter run">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Running <code>flutter run</code></h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="img/first_boot.png" alt="Launching the app">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Launching the app</code></h4>
+                                        <h5>Note the direction for hot reload and hot restart in the terminal.</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="img/change.png" alt="Hot Reloading">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Hot Reloading</code></h4>
+                                        <h5>We changed the color in the code and hot reloaded. Note that it only takes
+                                            around 4 seconds.</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#flutter-walkthrough" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#flutter-walkthrough" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="h2"><b>Resources and Extras</b></div>
+                        <div class="pl-4">
+                            <p>The <span class="highlight" id="flutter-web"><a href="https://ericlau00.github.io/flutter-demo"
+                                        target="_blank">Flutter Web</a></span> website we made to further demonstrate
+                                Flutter's capabilities.</p>
+                            <p> The
+                                <span class="highlight" id="github"><a href="https://github.com/flutter/flutter">Flutter
+                                        repository on GitHub</a></span> contains Flutter's codebase. </p>
+                            <p><span class="highlight" id="dartpad"><a href="https://dartpad.dev/"
+                                        target="_blank">DartPad</a></span>
+                                is an online IDE that can be used to test Dart and Flutter
+                                programs. We embedded a few pads in our website. </p>
+                            <p> The
+                                <span class="highlight" id="youtube"><a
+                                        href="https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw"
+                                        target="_blank">Flutter Youtube Channel</a></span>
+                                provides great videos on different widgets and concepts. </p>
+                            <p> The
+                                <span class="highlight" id="flutter"><a href="https://flutter.dev/"
+                                        target="_blank">official
+                                        Flutter website</a></span> provides Flutter samples and documentation. </p>
+                            <p> The
+                                <span class="highlight" id="dart"><a href="https://dart.dev/" target="_blank">official
+                                        Dart
+                                        website</a></span> provides Dart samples and documentation. </p>
+                            <p>
+                                The near-six-hour <span class="highlight" id="academind"><a
+                                        href="https://www.youtube.com/watch?v=x0uinJvhNxI" target="_blank">Academind
+                                        video</a></span> is a great starting point for Flutter
+                                beginners (we used it last summer to start learning). </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://dartpad.dev/inject_embed.dart.js"></script>
+            <script src="js/main.js"></script>
+    </body>
+
+</html>

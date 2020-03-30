@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+:root {
+    --github-color: rgba(0,0,0,0.5);
+    --flutter-web-color: rgba(234, 252, 76, 0.7);
+    --dartpad-color: rgba(43, 182, 246, 0.7);
+    --youtube-color: rgba(255, 0, 0, 0.5);
+    --flutter-color: rgba(10, 92, 156, 0.7);
+    --dart-color: rgba(0, 204, 179, 0.7);
+    --academind-color: rgba(251, 146, 63, 0.7);
+}
+
+body {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dartpad-color);
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: small;
+    -webkit-touch-callout: default; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
+}
+
+a, a:hover, a:focus, a:visited, a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.highlight {
+    border-bottom: 3px solid;
+    color: black;
+}
+
+.h1{
+    font-size: 3.6rem;
+}
+
+.h2 {
+    font-size: 3.2rem;
+    padding-top: 1.2rem;
+}
+
+.h3 {
+    font-size: 2.7rem;
+}
+
+.h4{
+    font-size: 2.5rem;
+}
+
+.h5{
+    font-size: 2.2rem;
+}
+
+.gist {
+    display: block;
+    word-wrap: break-word;
+}
+
+.icon {
+    max-width: 1.5rem;
+    height: auto;
+}
+
+.sub {
+    font-size: 1.3rem;
+}
+
+.carousel-caption {
+    background-color:var(--flutter-color);
+}
+
+#landing {
+    background-image: url('../img/flutter_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 100vh;
+}
+
+@media print {
+    .page-break-after {
+        clear: both;
+        page-break-after: always !important;
+    }
+
+    .page-break-before{
+        clear: both;
+        page-break-before: always !important;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    iframe {
+        display: none;
+    }
+
+    .highlight {
+        border-bottom: none;
+    }
+
+    .dart-tabs {
+        display: none;
+    }
+
+    .carousel-indicators{
+        display: none !important;
+    }
+
+    .carousel-item {
+        display: flex !important;
+        page-break-after:always !important;
+    }
+
+    #flutter-walkthrough, #walkthrough-brief {
+        display: none;
+    }
+
+}
