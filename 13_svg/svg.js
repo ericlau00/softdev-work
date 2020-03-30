@@ -1,4 +1,4 @@
-// Eric Lau and Pratham Rawat
+// Eric Lau and Pratham Rawat -- Physical Education
 // SoftDev2 pd1
 // K13 -- Ask Circles [Change || Die]
 // 2020-03-31
@@ -15,7 +15,7 @@ pic.addEventListener("mouseup", (e) => {
 });
 
 let addCircle = (x, y) => {
-    c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    let c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     c.setAttribute("cx", x);
     c.setAttribute("cy", y);
     c.setAttribute("r", "15");
@@ -31,14 +31,12 @@ let onCircleClick = (c) => {
         c.setAttribute("fill", "cyan");
         c.setAttribute("stroke", "cyan");
     } else if (c.getAttribute("fill") == "cyan") {
-        //remove this cirlce
-
-        // add a new one at a random point
+        pic.removeChild(c);
         addCircle(Math.random() * 500, Math.random() * 500);
     }
 }
 
-clearButton.addEventListener("click", function (e) {
+clearButton.addEventListener("click", () => {
     let fc = pic.firstChild;
     while (fc) {
         pic.removeChild(fc);
