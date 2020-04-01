@@ -36,13 +36,6 @@ const handleFirstClick = (e) => {
 const handleSecondClick = (e) => {
 
     // Only remove what the event listener is attached to
-    const circle = e.currentTarget;
-    if(extra) {
-        let r = Number(circle.getAttribute("r"));
-        while(r > 0) {
-            circle.setAttribute("r", String(r--));
-        }
-    }
     svg.removeChild(e.currentTarget);
 
     // Make sure circle doesn't go out of bounds
