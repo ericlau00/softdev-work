@@ -32,6 +32,8 @@
     Entering the following commands via console will
     incrementally re-create your hardcoded chart...
 
+    PREDICTIONS AND OBSERVATIONS
+
     //Init your data:
     let data = [4, 8, 15, 16, 23, 42];
       // data returns an array object
@@ -77,6 +79,27 @@
 
 
     QUESTIONS
-      // What is the point of the _exit property in barUpdate?
-      // Does _exit remove data instead of "entering" data?
+
+    // What is the point of the _exit property in barUpdate?
+    // Does _exit remove data instead of "entering" data?
   -------------------------------->
+
+<script>
+
+  let data = [4, 8, 15, 16, 23, 42];
+  let chart = d3.select('.chart');
+  let bar = chart.selectAll('div');
+  let barUpdate = bar.data(data);
+  let barEnter = barUpdate.enter().append("div");
+  barEnter.text(function (d) { return d; });
+
+  d3.select("body").transition().duration(1000)
+    .style("background-color", "orange");
+
+  barEnter.transition().duration(1000)
+    .delay(function (d, index) { return index * 10 })
+    .style('width', function (d) {
+      return d * 10 + 'px';
+    });
+
+</script>

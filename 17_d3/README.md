@@ -14,6 +14,7 @@ Step 0. Pick a new buddy, optimized for productivity and learnination.
    - Record notable observations, questions, predictions.
    - Move your better/merged index.html to d3_n00b.html in root of new work folder.
    - Note anything notable via comments.
+   - Create a notes.txt file in root of this workshop dir for rest of assignment.
 3. With your buddy, peruse this: d3js.org
    - Bookmark it.
    - Read through the transition section, and mimic the transition code in your d3_noob.html file.
@@ -21,6 +22,7 @@ Step 0. Pick a new buddy, optimized for productivity and learnination.
    - Bookmark it.
    - Complete Let’s Make a Bar Chart, Part I.
    - Use your stuy.edu address to authenticate at observablehq.
+   - Register your ohq username here: bit.ly/sd1920-ohq
 5. With your buddy, peruse this: observablehq.com/@d3/learn-d3
    - Bookmark it.
 6. With your buddy, work through [2. By Example](https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3)
