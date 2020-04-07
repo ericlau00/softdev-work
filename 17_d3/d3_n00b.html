@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--D3 demo: hardcoded bars removed, to be generated fr data-->
-<!--
-    Can yield a horizontal bar chart if properly bound to data
-    (steelblue bars, white number overlays)
-    ...but will yield only blank page at first.
-  -->
 <!--
     Eric Lau, Yaru Luo -- YikEs
     SoftDev2 pd1
@@ -12,23 +6,28 @@
     2020-04-08
 -->
 
-<style>
-  .chart div {
-    font: 10px sans-serif;
-    background-color: steelblue;
-    text-align: right;
-    padding: 3px;
-    margin: 1px;
-    color: white;
-  }
-</style>
+<html>
 
-<div class="chart">
-</div>
+  <head>
+    <title>K17 -- Deeper Into D3</title>
+    <style>
+      .chart div {
+        font: 10px sans-serif;
+        background-color: steelblue;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+      }
+    </style>
+  </head>
 
-<script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+  <body>
+    <div class="chart"></div>
 
-<!--------------------------------
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+
+    <!--------------------------------
     Entering the following commands via console will
     incrementally re-create your hardcoded chart...
 
@@ -36,70 +35,75 @@
 
     //Init your data:
     let data = [4, 8, 15, 16, 23, 42];
-      // data returns an array object
+        // data returns an array object
 
     //Select your chart.
     let chart = d3.select(".chart");
-      // chart returns a selection object
-      // _groups and _parents in chart are the elements inside and outside the selection
-      // note that the _groups
+        // chart returns a selection object
+        // _groups and _parents in chart are the elements inside and outside the selection
+        // note that the _groups
 
     //Prepare for data join.
     let bar = chart.selectAll("div");
-      // chart.selectAll("div") selects all of the div elements inside the chart element
-      // note that there are no div elements inside, so bar returns a selection with no divs.
+        // chart.selectAll("div") selects all of the div elements inside the chart element
+        // note that there are no div elements inside, so bar returns a selection with no divs.
 
     (this defines selection to which you will join data)
 
     //Join your data.
     let barUpdate = bar.data(data);
-      // bar.data(data) adds our data to the bar selection and returns a new selection
-      // the new selection has _groups with an array length of 6 (length of data)
-      // if there are div selections in bar, then the data will be assigned to that div
-      // since there are no div selections, the data is pushed to the _enter field.
-      // _enter contains all of the data in an array
+        // bar.data(data) adds our data to the bar selection and returns a new selection
+        // the new selection has _groups with an array length of 6 (length of data)
+        // if there are div selections in bar, then the data will be assigned to that div
+        // since there are no div selections, the data is pushed to the _enter field.
+        // _enter contains all of the data in an array
 
     //Instantiate new elements by appending to the “enter selection.”
     let barEnter = barUpdate.enter().append("div");
-      // barUpdate.enter().append('div') creates new divs, one for each data point
-      // the data is stored in the __data__ field of each div
-      // note that barEnter no longer has a _enter or _exit field
-      // all of the divs are in the _groups field
+        // barUpdate.enter().append('div') creates new divs, one for each data point
+        // the data is stored in the __data__ field of each div
+        // note that barEnter no longer has a _enter or _exit field
+        // all of the divs are in the _groups field
 
     //Set width of each bar proportional to its data value.
     barEnter.style("width", function(d) {
     return d * 10 + "px"; });
-      // returns the same barEnter object
-      // the CSS of each div has been modified directly, a new object is not made.
+        // returns the same barEnter object
+        // the CSS of each div has been modified directly, a new object is not made.
 
     //Label each bar.
     barEnter.text(function(d) { return d; });
-      // returns the same barEnter object
-      // the innerHTML of each div has been modified directly, a new object is not made.
+        // returns the same barEnter object
+        // the innerHTML of each div has been modified directly, a new object is not made.
 
 
     QUESTIONS
 
-    // What is the point of the _exit property in barUpdate?
-    // Does _exit remove data instead of "entering" data?
+        // What is the point of the _exit property in barUpdate?
+        // Does _exit remove data instead of "entering" data?
+        // What does Pt mean in Pt {_groups: Array(1), _parents: Array(1)}?
+        // Pt appears when printing out every object in the script with the exception of data.
   -------------------------------->
 
-<script>
+    <script>
 
-  let data = [4, 8, 15, 16, 23, 42];
-  let chart = d3.select('.chart');
-  let bar = chart.selectAll('div');
-  let barUpdate = bar.data(data);
-  let barEnter = barUpdate.enter().append("div");
-  barEnter.text(function (d) { return d; });
+      let data = [4, 8, 15, 16, 23, 42];
+      let chart = d3.select('.chart');
+      let bar = chart.selectAll('div');
+      let barUpdate = bar.data(data);
+      let barEnter = barUpdate.enter().append("div");
+      barEnter.text(function (d) { return d; });
 
-  d3.select("body").transition().duration(1000)
-    .style("background-color", "orange");
+      d3.select("body").transition().duration(1000)
+        .style("background-color", "orange");
 
-  barEnter.transition().duration(1000)
-    .delay(function (d, index) { return index * 10 })
-    .style('width', function (d) {
-      return d * 10 + 'px';
-    });
+      barEnter.transition().duration(1000)
+        .delay(function (d, index) { return index * 10 })
+        .style('width', function (d) {
+          return d * 10 + 'px';
+        });
 
-</script>
+    </script>
+  </body>
+
+</html>

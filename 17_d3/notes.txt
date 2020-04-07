@@ -1,0 +1,29 @@
+Eric Lau, Yaru Luo -- YikEs
+SoftDev2 pd1
+K17 -- Deeper Into D3
+2020-04-08
+
+Transitions @https://d3js.org/#transitions
+
+    Note that in the following sample code the functions are indented with four spaces instead of two
+
+    d3.selectAll("circle").transition()
+        .duration(750)
+        .delay(function(d, i) { return i * 10; })
+        .attr("r", function(d) { return Math.sqrt(d * scale); });
+
+    This is because the functions are modifying the present object instead of creating a new one.
+    The convention in d3 is for functions that return a new object to be indented with 2 spaces.
+
+    In function(d, i), the d represents the data and the i represents the index of the selection
+
+    What is scale in Math.sqrt(d * scale)?
+
+    What is Ur in Ur {_groups: Array(1), _parents: Array(1), _name: null, _id: 3}?
+    Instead of Pt, which was returned when printing out selections, the transitions return Ur
+
+Let's Make a Bar Chart, Part 1 @https://observablehq.com/@d3/lets-make-a-bar-chart
+
+Learn D3: Introduction @https://observablehq.com/@d3/learn-d3
+
+Learn D3: By Example @https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3
