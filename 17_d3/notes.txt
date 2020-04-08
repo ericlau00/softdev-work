@@ -68,3 +68,14 @@ Learn D3: Introduction @https://observablehq.com/@d3/learn-d3
     Very customizable.
 
 Learn D3: By Example @https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3
+    Import statements:
+      - Lets you quickly reuse code by importing named cells from other notebooks
+      - With clause: a feature unique to Observable JavaScript (substitutes variables)
+
+      Modification of height:
+      - Customizable values can change the appearance of the y- or y-axis
+
+      Dynamic data:
+      - d3 enters and removes the data with joins
+      - Enter, update, exit pattern
+      - Allows for nice transitions between states
