@@ -87,11 +87,11 @@
 
     <script>
 
-      let data = [4, 8, 15, 16, 23, 42];
-      let chart = d3.select('.chart');
-      let bar = chart.selectAll('div');
-      let barUpdate = bar.data(data);
-      let barEnter = barUpdate.enter().append("div");
+      const data = [4, 8, 15, 16, 23, 42];
+      const chart = d3.select('.chart');
+      const bar = chart.selectAll('div');
+      const barUpdate = bar.data(data);
+      const barEnter = barUpdate.enter().append("div");
       barEnter.text(function (d) { return d; });
 
       d3.select("body").transition().duration(1000)

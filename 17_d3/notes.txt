@@ -24,6 +24,47 @@ Transitions @https://d3js.org/#transitions
 
 Let's Make a Bar Chart, Part 1 @https://observablehq.com/@d3/lets-make-a-bar-chart
 
+    Selecting an Element
+
+        selection.node returns the element
+
+            i.e. div.node() might return <div>Hello, World!</div>
+
+    Chaining Methods
+
+        use four spaces for methods that return the current selection
+        use two spaces for methods that return something else
+
+        reduces the number of one-time use variables by returning the same object
+        with modifications
+
+    Coding a Chart, Automatically
+
+        selection.join does the job of entering, updating, and exiting data
+        this is different from enter.append() which only does the job of entering
+
+        When is it beneficial to use selection.join() rather than enter.append() and vice versa?
+
+        selection.attr or selection.style can take in a constant value or a function value.
+
+    Scaling to Fit
+
+        using d3 scales allow d3 to take care of scaling the amount of space
+        a data represents instead of hard coding the number of pixels ourselves.
+
+        x = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([0, 420])
+
+        returns a function that maps inputted x values (data points) to the correct
+        y value on the range.
+
+        are there other types of scales besides linear?
+
 Learn D3: Introduction @https://observablehq.com/@d3/learn-d3
+
+    D3 is more concerned with providing easy manipulation of data and objects
+    than providing prebuilt components and visualizations.
+    Very customizable.
 
 Learn D3: By Example @https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3
