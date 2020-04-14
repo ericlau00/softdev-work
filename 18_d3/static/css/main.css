@@ -19,6 +19,10 @@ body {
     font-size: 2.5rem;
 }
 
+.h3 {
+    font-size: 2rem;
+}
+
 .noselect {
     -webkit-touch-callout: default; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -32,4 +36,8 @@ body {
 #landing {
     color: white;
     background: rgb(3,0,46);
+}
+
+.button {
+    cursor: pointer;
 }
