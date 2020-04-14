@@ -7,6 +7,8 @@ let created = false;
 
 let visualization = document.getElementById('visualization')
 
+let decade = 1940;
+
 document.getElementById('render-button').addEventListener('click', () => {
     if (!created) {
         let svg = createSVG();
@@ -21,7 +23,7 @@ const createSVG = () => {
         <div class="container-fluid vh-100">
             <div class="col">
                 <div class="row py-5 justify-content-center align-items-center">
-                    <div class="h2"><b>Decade: 19<span id="decade">40</span>s<b></div>
+                    <div class="h2"><b>Decade: <span id="decade">${decade}</span>s<b></div>
                 </div>
                 <div class="row justify-content-center align-items-center pb-2" id="svg-container">
                 </div>
