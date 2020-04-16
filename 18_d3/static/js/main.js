@@ -5,7 +5,7 @@
 
 let created = false;
 let visualization = document.getElementById('visualization');
-let decade = 1950;
+let decade = 1930;
 let ufoData;
 
 document.getElementById('render-button').addEventListener('click', async () => {
@@ -13,7 +13,7 @@ document.getElementById('render-button').addEventListener('click', async () => {
         ufoData = await getData();
         let svg = createSVG();
         decadeListener('next', 10, 2010, svg);
-        decadeListener('previous', -10, 1950, svg);
+        decadeListener('previous', -10, 1930, svg);
         render(svg);
         created = true;
     }
@@ -27,31 +27,22 @@ const decadeListener = (id, change, edge, svg) => {
             render(svg);
         }
         document.getElementById('decade').innerHTML = decade;
-    })
+    });
 }
 
 const createSVG = () => {
-    visualization.innerHTML += `
-        <div class="container-fluid vh-100">
-            <div class="col">
-                <div class="row py-5 justify-content-center align-items-center">
-                    <div class="h2"><b>Decade: <span id="decade">${decade}</span>s<b></div>
-                </div>
-                <div class="row justify-content-center align-items-center pb-2" id="svg-container">
-                </div>
-                <div class="row d-flex justify-content-between pt-5 noselect">
-                    <div class="h3 px-5 button" id="previous"><b>&#9664; Previous Decade</b></div>
-                    <div class="h3 px-5 button" id="next"><b>Next Decade &#9654;</b></div>
-                </div>
-            </div>
-        </div>`
+    visualization.style.display = 'block';
+    document.getElementById('decade').innerHTML = decade;
+
     return d3.select('#svg-container').append('svg')
-        .attr("viewBox", [0, 0, 975, 610]) // 975 by 610 is the default size for rendering a map of the USA
-        .attr("width", "60%").append('g');
+        // 975 by 610 is the default size for rendering a map of the USA
+        .attr("viewBox", [0, 0, 975, 610])
+        .attr("width", "60%")
+        .append('g');
 };
 
 const render = async (svg) => {
-    // this file contains data about the outline of the United States
+    // states-albers-10m.json contains data about the outline of the United States
     let us = await d3.json('static/json/states-albers-10m.json');
 
     /*
@@ -68,10 +59,15 @@ const render = async (svg) => {
             'type': 'Feature',
         }
     */
+    let pathData = topojson.feature(us, us.objects.states).features;
 
     svg.selectAll("path")
-      .data(topojson.feature(us, us.objects.states).features)
-      .join("path") // consider splitting by enter, update, remove
+      .data(pathData)
+      .join("path")
+        // consider splitting by enter, update, remove
+        // https://observablehq.com/@d3/selection-join
+        // consider moving .attr("d", d3.geoPath()) to only be called inside enter
+        // (don't want to redraw the paths everytime)
         .attr("fill", d => {
 
             // Handle District of Columbia edge case
@@ -81,6 +77,10 @@ const render = async (svg) => {
             let numOfSightings = ufoData[String(decade)][stateName]; //retrieve the number of sightings by decade and state
 
             //based on the number of sightings create a color and set the color to the fill of the state
+            //https://observablehq.com/@d3/color-schemes
+            //https://observablehq.com/@d3/color-legend
+            //https://github.com/d3/d3-scale-chromatic
+            //https://observablehq.com/@d3/choropleth
 
             console.log(decade, stateName, numOfSightings);
             return 'red';
@@ -90,7 +90,10 @@ const render = async (svg) => {
         .attr("d", d3.geoPath());
 
     // Add transition on color change
-    // Add legend of colors (will probably also have to change numbers on legend based on max and min? or can make constant like 0 to 10000?)
+    // Add legend of colors
+    // The legend can change based on the maximum and minimum per decade
+    // or it can be constant from 0 to [some large number]
+    // http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
 };
 
 const getData = async () => {
@@ -106,12 +109,12 @@ const getData = async () => {
     /*
        ufoSightings Holds the number of UFO sightings in each state during each decade
         {
-            '1950': {
+            '1930': {
                 'Alabama': 0,
                 'Alaska': 0,
                 ...
             },
-            '1960': {
+            '1940': {
                 'Alabama': 0,
                 'Alaska': 0,
                 ...
@@ -120,14 +123,14 @@ const getData = async () => {
         }
     */
     let ufoSightings = new Object();
-    for (let i = 1950; i < 2020; i += 10) {
+    for (let i = 1930; i < 2020; i += 10) {
         ufoSightings[String(i)] = new Object();
         for (const abbreviation in stateMap) {
             ufoSightings[String(i)][stateMap[abbreviation]] = 0;
         }
     }
 
-    // fill ufoSightings with USA UFO sightings from 1950 onward.
+    // fill ufoSightings with USA UFO sightings from 1930 onward.
     let data = await d3.csv("static/csv/scrubbed.csv");
     data.forEach((sighting) => {
         let abbreviation = sighting['state'];
@@ -135,7 +138,7 @@ const getData = async () => {
         let space = date.indexOf(' ');
         let decade = date.substring(space - 4, space).substring(0, 3) + '0';
 
-        if (sighting['country'] == 'us' && decade >= '1950') {
+        if (sighting['country'] == 'us' && decade >= '1930') {
             ufoSightings[decade][stateMap[abbreviation]]++;
         }
     });

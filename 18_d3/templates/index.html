@@ -49,7 +49,21 @@ K18 -- Come Up For Air
                 </div>
             </div>
         </div>
-        <div id="visualization"></div>
+        <div id="visualization">
+            <div class="container-fluid vh-100">
+                <div class="col">
+                    <div class="row py-5 justify-content-center align-items-center">
+                        <div class="h2"><b>Decade: <span id="decade"></span>s<b></div>
+                    </div>
+                    <div class="row justify-content-center align-items-center pb-2" id="svg-container">
+                    </div>
+                    <div class="row d-flex justify-content-between pt-5 noselect">
+                        <div class="h3 px-5 button" id="previous"><b>&#9664; Previous Decade</b></div>
+                        <div class="h3 px-5 button" id="next"><b>Next Decade &#9654;</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://unpkg.com/topojson-client@3"></script>
         <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
         <script src="{{ url_for('static', filename='js/main.js')}}"></script>

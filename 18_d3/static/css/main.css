@@ -41,3 +41,7 @@ body {
 .button {
     cursor: pointer;
 }
+
+#visualization {
+    display: none;
+}
