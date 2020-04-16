@@ -62,8 +62,8 @@ const render = async (svg) => {
     let pathData = topojson.feature(us, us.objects.states).features;
 
     svg.selectAll("path")
-      .data(pathData)
-      .join("path")
+        .data(pathData)
+        .join("path")
         // consider splitting by enter, update, remove
         // https://observablehq.com/@d3/selection-join
         // consider moving .attr("d", d3.geoPath()) to only be called inside enter
@@ -76,16 +76,16 @@ const render = async (svg) => {
 
             let numOfSightings = ufoData[String(decade)][stateName]; //retrieve the number of sightings by decade and state
 
-            //based on the number of sightings create a color and set the color to the fill of the state
-            //https://observablehq.com/@d3/color-schemes
-            //https://observablehq.com/@d3/color-legend
-            //https://github.com/d3/d3-scale-chromatic
-            //https://observablehq.com/@d3/choropleth
+            // based on the number of sightings create a color and set the color to the fill of the state
+            // https://observablehq.com/@d3/color-schemes
+            // https://observablehq.com/@d3/color-legend
+            // https://github.com/d3/d3-scale-chromatic
+            // https://observablehq.com/@d3/choropleth
 
             console.log(decade, stateName, numOfSightings);
             return 'red';
         })
-        // d3.geoPath() gets the coordinates from the features object and constructs a path
+        // d3.geoPath() gets the coordinates from the data object and constructs a path
         // MDN Docs on pathing: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         .attr("d", d3.geoPath());
 
@@ -94,6 +94,23 @@ const render = async (svg) => {
     // The legend can change based on the maximum and minimum per decade
     // or it can be constant from 0 to [some large number]
     // http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
+
+    // creates a border around each state
+    // don't use this unless we can explain what
+    // topojson.mesh(us, us.objects.states, (a, b)) does
+    // https://github.com/topojson/topojson-client/blob/master/README.md#mesh
+    console.log(topojson.mesh(us, us.objects.states, (a, b) => a !== b));
+    svg.append("path")
+        //.datum adds a single data point
+        .datum(topojson.mesh(us, us.objects.states, (a, b) =>  a !== b))
+        .attr("fill", "none")
+        .attr("stroke", "white")
+        // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
+        .attr("stroke-linejoin", "round")
+        .attr("d", d3.geoPath());
+
+    // consider making a variable for d3.geoPath() if we also do borders
+    // we use d3.geoPath() twice.
 };
 
 const getData = async () => {
@@ -107,7 +124,7 @@ const getData = async () => {
     }
 
     /*
-       ufoSightings Holds the number of UFO sightings in each state during each decade
+       ufoSightings holds the number of UFO sightings in each state during each decade
         {
             '1930': {
                 'Alabama': 0,
