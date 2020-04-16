@@ -41,6 +41,24 @@ const createSVG = () => {
 const render = async (svg) => {
     let us = await d3.json('static/json/states-albers-10m.json');
 
+    let states = { "AL": "Alabama", "AK": "Alaska", "AS": "American Samoa", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District Of Columbia", "FM": "Federated States Of Micronesia", "FL": "Florida", "GA": "Georgia", "GU": "Guam", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MH": "Marshall Islands", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "MP": "Northern Mariana Islands", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PW": "Palau", "PA": "Pennsylvania", "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VI": "Virgin Islands", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
+    for (const state in states) {
+        states[state.toLowerCase()] = states[state];
+        delete states[state];
+    }
+
+    let stateData = new Object();
+    for(let i = 1960; i < 2020; i+=10) {
+        stateData[String(i)] = new Object();
+        for(const state in states) {
+            stateData[String(i)][states[state]] = 0;
+        }
+    }
+
+    console.log(stateData);
+
+    console.log(states);
+
     svg.append("g")
         .selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
