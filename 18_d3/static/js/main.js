@@ -23,6 +23,7 @@ document.getElementById('render-button').addEventListener('click', async () => {
 const decadeListener = (id, change, edge, svg) => {
     document.getElementById(id).addEventListener('click', () => {
         if (decade != edge) {
+            // consider counting down or up the years while the colors are transitioning
             decade += change;
             render(svg);
         }
@@ -96,8 +97,7 @@ const render = async (svg) => {
     // http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
 
     // creates a border around each state
-    // don't use this unless we can explain what
-    // topojson.mesh(us, us.objects.states, (a, b)) does
+    // don't use this unless we can explain what topojson.mesh(us, us.objects.states, (a, b)) does
     // https://github.com/topojson/topojson-client/blob/master/README.md#mesh
     console.log(topojson.mesh(us, us.objects.states, (a, b) => a !== b));
     svg.append("path")
@@ -153,7 +153,7 @@ const getData = async () => {
         let abbreviation = sighting['state'];
         let date = sighting['datetime'];
         let space = date.indexOf(' ');
-        let decade = date.substring(space - 4, space).substring(0, 3) + '0';
+        let decade = date.substring(space - 4, space - 1) + '0';
 
         if (sighting['country'] == 'us' && decade >= '1930') {
             ufoSightings[decade][stateMap[abbreviation]]++;
