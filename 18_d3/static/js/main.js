@@ -12,11 +12,23 @@ document.getElementById('render-button').addEventListener('click', async () => {
     if (!created) {
         ufoData = await getData();
         let svg = createSVG();
+        decadeListener('next', 10, 2010, svg);
+        decadeListener('previous', -10, 1950, svg);
         render(svg);
         created = true;
     }
     window.scrollTo(0, visualization.offsetTop);
 });
+
+const decadeListener = (id, change, edge, svg) => {
+    document.getElementById(id).addEventListener('click', () => {
+        if (decade != edge) {
+            decade += change;
+            render(svg);
+        }
+        document.getElementById('decade').innerHTML = decade;
+    })
+}
 
 const createSVG = () => {
     visualization.innerHTML += `
@@ -27,15 +39,15 @@ const createSVG = () => {
                 </div>
                 <div class="row justify-content-center align-items-center pb-2" id="svg-container">
                 </div>
-                <div class="row d-flex justify-content-between pt-5">
-                <div class="h3 px-5 button" id="previous"><b>&#9664; Previous Decade</b></div>
-                <div class="h3 px-5 button" id="next"><b>Next Decade &#9654;</b></div>
+                <div class="row d-flex justify-content-between pt-5 noselect">
+                    <div class="h3 px-5 button" id="previous"><b>&#9664; Previous Decade</b></div>
+                    <div class="h3 px-5 button" id="next"><b>Next Decade &#9654;</b></div>
                 </div>
             </div>
         </div>`
     return d3.select('#svg-container').append('svg')
         .attr("viewBox", [0, 0, 975, 610]) // 975 by 610 is the default size for rendering a map of the USA
-        .attr("width", "60%");
+        .attr("width", "60%").append('g');
 };
 
 const render = async (svg) => {
@@ -57,10 +69,9 @@ const render = async (svg) => {
         }
     */
 
-    svg.append("g")
-      .selectAll("path")
+    svg.selectAll("path")
       .data(topojson.feature(us, us.objects.states).features)
-      .join("path")
+      .join("path") // consider splitting by enter, update, remove
         .attr("fill", d => {
 
             // Handle District of Columbia edge case
@@ -71,12 +82,15 @@ const render = async (svg) => {
 
             //based on the number of sightings create a color and set the color to the fill of the state
 
+            console.log(decade, stateName, numOfSightings);
             return 'red';
         })
         // d3.geoPath() gets the coordinates from the features object and constructs a path
         // MDN Docs on pathing: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         .attr("d", d3.geoPath());
 
+    // Add transition on color change
+    // Add legend of colors (will probably also have to change numbers on legend based on max and min? or can make constant like 0 to 10000?)
 };
 
 const getData = async () => {
