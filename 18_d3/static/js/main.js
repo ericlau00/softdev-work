@@ -7,7 +7,56 @@ let created = false;
 
 let visualization = document.getElementById('visualization')
 
-let decade = 1940;
+let decade = 1950;
+
+const getData = async () => {
+
+    let stateMap = { "AL": "Alabama", "AK": "Alaska", "AS": "American Samoa", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District Of Columbia", "FM": "Federated States Of Micronesia", "FL": "Florida", "GA": "Georgia", "GU": "Guam", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MH": "Marshall Islands", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "MP": "Northern Mariana Islands", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PW": "Palau", "PA": "Pennsylvania", "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VI": "Virgin Islands", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
+
+    // make all of the abbreviations lower case and remove the upper case abbreviations
+    for (const state in stateMap) {
+        stateMap[state.toLowerCase()] = stateMap[state];
+        delete stateMap[state];
+    }
+
+    /*
+       ufoSightings Holds the number of UFO sightings in each state during each decade
+        {
+            '1950': {
+                'Alabama': 0,
+                'Alaska': 0,
+                ...
+            },
+            '1960': {
+                'Alabama': 0,
+                'Alaska': 0,
+                ...
+            },
+            ...
+        }
+    */
+    let ufoSightings = new Object();
+    for (let i = 1950; i < 2020; i += 10) {
+        ufoSightings[String(i)] = new Object();
+        for (const abbreviation in stateMap) {
+            ufoSightings[String(i)][stateMap[abbreviation]] = 0;
+        }
+    }
+
+    // fill in ufoSightings with USA UFO sightings from 1950 onward.
+    let data = await d3.csv("static/csv/scrubbed.csv");
+    data.forEach((sighting) => {
+        let abbreviation = sighting['state'];
+        let date = sighting['datetime'];
+        let space = date.indexOf(' ');
+        let decade = date.substring(space - 4, space).substring(0, 3) + '0';
+
+        if (sighting['country'] == 'us' && decade >= '1950') {
+            ufoSightings[decade][states[abbreviation]]++;
+        }
+    });
+    return ufoSightings;
+};
 
 document.getElementById('render-button').addEventListener('click', () => {
     if (!created) {
@@ -40,29 +89,28 @@ const createSVG = () => {
 
 const render = async (svg) => {
     let us = await d3.json('static/json/states-albers-10m.json');
+    let data = await getData();
 
-    let states = { "AL": "Alabama", "AK": "Alaska", "AS": "American Samoa", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District Of Columbia", "FM": "Federated States Of Micronesia", "FL": "Florida", "GA": "Georgia", "GU": "Guam", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MH": "Marshall Islands", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "MP": "Northern Mariana Islands", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PW": "Palau", "PA": "Pennsylvania", "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VI": "Virgin Islands", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
-    for (const state in states) {
-        states[state.toLowerCase()] = states[state];
-        delete states[state];
-    }
-
-    let stateData = new Object();
-    for(let i = 1960; i < 2020; i+=10) {
-        stateData[String(i)] = new Object();
-        for(const state in states) {
-            stateData[String(i)][states[state]] = 0;
-        }
-    }
-
-    console.log(stateData);
-
-    console.log(states);
+    console.log(data);
 
     svg.append("g")
         .selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
         .join("path")
-        .attr("fill", 'red')
+        .attr("fill", (d) => {
+            // console.log(d);
+            // let stateName = d['properties']['name'];
+            // console.log(somethingElse);
+            // console.log(String(decade));
+            // let numOfSightings = data[String(decade)][stateName];
+            // console.log(numOfSightings);
+            return 'red';
+        })
         .attr("d", d3.geoPath());
+    // console.log( us.objects.states);
 };
+
+const getThing = async (svg) => {
+    let data = await d3.csv("static/csv/scrubbed.csv");
+    console.log(data[0]);
+}
