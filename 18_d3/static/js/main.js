@@ -34,25 +34,49 @@ const createSVG = () => {
             </div>
         </div>`
     return d3.select('#svg-container').append('svg')
-        .attr("viewBox", [0, 0, 975, 610])
+        .attr("viewBox", [0, 0, 975, 610]) // 975 by 610 is the default size for rendering a map of the USA
         .attr("width", "60%");
 };
 
 const render = async (svg) => {
+    // this file contains data about the outline of the United States
     let us = await d3.json('static/json/states-albers-10m.json');
 
+    /*
+        topojson.feature(us, us.objects.states).features
+            creates an array of "features" objects
+            each object represents a state (or the District of Columbia)
+            the object contains the outline of the state and the name of the state
+
+        e.g.
+        {
+            'geometry': {'type': 'Polygon', 'coordinates': Array()},
+            'id': Number(),
+            'properties': {'name': 'Montana'},
+            'type': 'Feature',
+        }
+    */
+
     svg.append("g")
-        .selectAll("path")
-        .data(topojson.feature(us, us.objects.states).features)
-        .join("path")
+      .selectAll("path")
+      .data(topojson.feature(us, us.objects.states).features)
+      .join("path")
         .attr("fill", d => {
-            // District of Columbia edge case
-            let stateName = d['properties']['name'];
-            let numOfSightings = ufoData[String(decade)][stateName];
-            console.log(stateName, numOfSightings);
+
+            // Handle District of Columbia edge case
+
+            let stateName = d['properties']['name']; //retrieve the name of the state from d
+
+            let numOfSightings = ufoData[String(decade)][stateName]; //retrieve the number of sightings by decade and state
+
+            //based on the number of sightings create a color and set the color to the fill of the state
+
             return 'red';
         })
+        // d3.geoPath() gets the coordinates from the features object and constructs a path
+        // MDN Docs on pathing: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         .attr("d", d3.geoPath());
+
 };
 
 const getData = async () => {
@@ -89,7 +113,7 @@ const getData = async () => {
         }
     }
 
-    // fill in ufoSightings with USA UFO sightings from 1950 onward.
+    // fill ufoSightings with USA UFO sightings from 1950 onward.
     let data = await d3.csv("static/csv/scrubbed.csv");
     data.forEach((sighting) => {
         let abbreviation = sighting['state'];
