@@ -8,9 +8,10 @@ let visualization = document.getElementById('visualization');
 let decade = 1930;
 let ufoData;
 
-document.getElementById('render-button').addEventListener('click', async () => {
+window.onload = async () => { ufoData = await getData(); }
+
+document.getElementById('render-button').addEventListener('click', () => {
     if (!created) {
-        ufoData = await getData();
         let svg = createSVG();
         decadeListener('next', 10, 2010, svg);
         decadeListener('previous', -10, 1930, svg);
@@ -44,6 +45,7 @@ const createSVG = () => {
 
 const render = async (svg) => {
     // states-albers-10m.json contains data about the outline of the United States
+    // more json files for the US can be found here https://github.com/topojson/us-atlas
     let us = await d3.json('static/json/states-albers-10m.json');
 
     /*
@@ -84,7 +86,7 @@ const render = async (svg) => {
             // https://observablehq.com/@d3/choropleth
 
             console.log(decade, stateName, numOfSightings);
-            return 'red';
+            return 'green';
         })
         // d3.geoPath() gets the coordinates from the data object and constructs a path
         // MDN Docs on pathing: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
@@ -102,7 +104,7 @@ const render = async (svg) => {
     console.log(topojson.mesh(us, us.objects.states, (a, b) => a !== b));
     svg.append("path")
         //.datum adds a single data point
-        .datum(topojson.mesh(us, us.objects.states, (a, b) =>  a !== b))
+        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
         .attr("fill", "none")
         .attr("stroke", "white")
         // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
@@ -115,12 +117,12 @@ const render = async (svg) => {
 
 const getData = async () => {
 
-    let stateMap = { "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PW": "Palau", "PA": "Pennsylvania", "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VI": "Virgin Islands", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
+    let stateMap = { "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
 
     // make all of the abbreviations lower case and remove the upper case abbreviations
-    for (const state in stateMap) {
-        stateMap[state.toLowerCase()] = stateMap[state];
-        delete stateMap[state];
+    for ( const state in stateMap) {
+        stateMap[ state.toLowerCase()] = stateMap[ state];
+        delete stateMap[ state];
     }
 
     /*
@@ -140,23 +142,23 @@ const getData = async () => {
         }
     */
     let ufoSightings = new Object();
-    for (let i = 1930; i < 2020; i += 10) {
-        ufoSightings[String(i)] = new Object();
-        for (const abbreviation in stateMap) {
-            ufoSightings[String(i)][stateMap[abbreviation]] = 0;
+    for ( let i = 1930; i < 2020; i += 10) {
+        ufoSightings[ String(i)] = new Object();
+        for ( const abbreviation in stateMap) {
+            ufoSightings[ String(i)][ stateMap[ abbreviation]] = 0;
         }
     }
 
     // fill ufoSightings with USA UFO sightings from 1930 onward.
-    let data = await d3.csv("static/csv/scrubbed.csv");
-    data.forEach((sighting) => {
-        let abbreviation = sighting['state'];
-        let date = sighting['datetime'];
-        let space = date.indexOf(' ');
-        let decade = date.substring(space - 4, space - 1) + '0';
+    let data = await d3.csv( "static/csv/scrubbed.csv");
+    data.forEach( sighting => {
+        let abbreviation = sighting[ 'state'];
+        let date = sighting[ 'datetime'];
+        let space = date.indexOf( ' ');
+        let decade = date.substring( space - 4, space - 1) + '0';
 
-        if (sighting['country'] == 'us' && decade >= '1930') {
-            ufoSightings[decade][stateMap[abbreviation]]++;
+        if ( sighting[ 'country'] == 'us' && decade >= '1930') {
+            ufoSightings[ decade][ stateMap[ abbreviation]]++;
         }
     });
     return ufoSightings;
