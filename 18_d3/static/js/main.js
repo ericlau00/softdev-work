@@ -58,7 +58,6 @@ const createSVG = () => {
 
 const render = async (svg) => {
     // states-albers-10m.json contains data about the outline of the United States
-    // more json files for the US can be found here https://github.com/topojson/us-atlas
     let us = await d3.json('static/json/states-albers-10m.json');
 
     /*
@@ -76,60 +75,67 @@ const render = async (svg) => {
     */
     let pathData = topojson.feature(us, us.objects.states).features;
 
+    // creates a color mapping function
+    let colorMapper = generateColorMapper();
+
     svg.selectAll("path")
         .data(pathData)
         .join(
             enter => enter.append('path')
                 // d3.geoPath() gets the coordinates from the data object and constructs a path
-                // MDN Docs on pathing: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
                 .attr('d', d3.geoPath())
-                .attr('fill', d => color(d)),
+                .attr('fill', d => color(colorMapper, d)),
             update => update
                 .transition(d3.transition().duration(1500))
-                .attr('fill', d => color(d))
+                .attr('fill', d => color(colorMapper, d))
         );
 
     // Add legend of colors
     // The legend can change based on the maximum and minimum per decade
     // or it can be constant from 0 to [some large number]
-    // http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922
 
-    // creates a border around each state
-    // don't use this unless we can explain what topojson.mesh(us, us.objects.states) does
-    // https://github.com/topojson/topojson-client/blob/master/README.md#mesh
-    // console.log(topojson.mesh(us, us.objects.states);
+    /*
+        topojson.mesh(us, us.objects.states)
+            creates a MultiLineString comprised of arrays
+            the arrays hold coordinates that outline the state borders
+
+        i.e. {type: "MultiLineString", coordinates: Array(195)}
+
+        topojson.mesh is useful for creating complicated outlines that can overlap
+    */
+    let borderDatum = topojson.mesh(us, us.objects.states);
+
     svg.append("path")
-        //.datum adds a single data point
-        .datum(topojson.mesh(us, us.objects.states))
+        // .datum() adds a single data point
+        // it also skips the enter, update, remove step
+        .datum(borderDatum)
         .attr("fill", "none")
         .attr("stroke", "black")
-        // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
+        // stroke-linejoin defines the behavior of a stroke at corners
         .attr("stroke-linejoin", "round")
         .attr("d", d3.geoPath());
 };
 
-const color = (d) => {
-    let stateName = d['properties']['name']; //retrieve the name of the state from d
+const color = (colorMapper, d) => {
+    //retrieve the name of the state
+    let stateName = d['properties']['name'];
 
-    let numOfSightings = ufoData[String(decade)][stateName]; //retrieve the number of sightings by decade and state
+    //retrieve the number of sightings based on decade and state name
+    let numOfSightings = ufoData[String(decade)][stateName];
 
-    let colorMapper = generateColorMapper();
-
-    // based on the number of sightings create a color and set the color to the fill of the state
-    // https://observablehq.com/@d3/color-schemes
-    // https://observablehq.com/@d3/color-legend
-    // https://github.com/d3/d3-scale-chromatic
-    // https://observablehq.com/@d3/choropleth
-
+    // generate a color based on the number of sightings
     return colorMapper( numOfSightings);
 }
 
-// this function generates a function
 const generateColorMapper = () => {
-    let numOfSightings = Object.values( ufoData[ decade]);
-    let min = d3.min( numOfSightings);
-    let max = d3.max( numOfSightings);
-    return d3.scaleQuantize( [ min, max], greens.slice( 0, greens.length));
+    let sightings = Object.values( ufoData[ decade]);
+
+    // d3.scaleQuantize() creates a scaling function that maps a domain to a range
+    // this is different from a linear scale because the range is not continuous
+    // in our case, we map the number of sightings to colors (the colors are not continuous)
+    return d3.scaleQuantize()
+        .domain( [ d3.min( sightings), d3.max( sightings)])
+        .range( greens.slice( 0, greens.length));
 }
 
 const getData = async () => {
@@ -180,3 +186,43 @@ const getData = async () => {
     });
     return ufoSightings;
 };
+
+/*
+  Links and resources used
+
+    General:
+    https://observablehq.com/@d3/choropleth
+        - This notebook by Mike Bostock got us off the ground on how to make choropleths
+
+    Making the map:
+    https://github.com/topojson/us-atlas
+        - This repository contains various JSON files that outline the USA
+        - topojson seems to be the go-to when making maps in D3
+        - topojson is maintained by Mike Bostock
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+        - This documentation goes over how path elements work in SVGs
+
+    https://github.com/topojson/topojson-client/blob/master/README.md#feature
+        - This README section goes over how topojson.feature() works
+
+    Borders:
+    https://github.com/topojson/topojson-client/blob/master/README.md#mesh
+        - This README section goes over how topojson.mesh() works
+
+    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
+        - This documentation goes over what the stroke-linejoin attribute does
+
+    https://github.com/d3/d3-selection#selection_datum
+        - This README section goes over what selection.datum() is
+
+    Colors:
+    https://observablehq.com/@d3/color-schemes
+    https://observablehq.com/@d3/color-legend
+    https://github.com/d3/d3-scale#quantize-scales
+    https://observablehq.com/@d3/quantile-quantize-and-threshold-scales
+
+    https://observablehq.com/@d3/d3-extent
+    https://observablehq.com/@d3/selection-join
+    https://github.com/d3/d3-transition
+*/
