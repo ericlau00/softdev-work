@@ -8,6 +8,13 @@ let visualization = document.getElementById('visualization');
 let decade = 1930;
 let ufoData;
 
+// create function to find the min and max of the current decade
+    // parse through the ufoData object and get an array of all ufo sightings
+    // use d3.min and d3.max to find min and max
+// pass min and max into render function
+// invoke this function and pass in the min and max to the render function
+// create a coloring function (data, min, max);
+
 window.onload = async () => { ufoData = await getData(); }
 
 document.getElementById('render-button').addEventListener('click', () => {
@@ -15,6 +22,7 @@ document.getElementById('render-button').addEventListener('click', () => {
         let svg = createSVG();
         decadeListener('next', 10, 2010, svg);
         decadeListener('previous', -10, 1930, svg);
+        // findMinMax();
         render(svg);
         created = true;
     }
@@ -26,6 +34,7 @@ const decadeListener = (id, change, edge, svg) => {
         if (decade != edge) {
             // consider counting down or up the years while the colors are transitioning
             decade += change;
+            // findMinMax();
             render(svg);
         }
         document.getElementById('decade').innerHTML = decade;
