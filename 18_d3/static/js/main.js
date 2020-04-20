@@ -5,7 +5,10 @@
 
 let created = false;
 let visualization = document.getElementById('visualization');
+
 let ufoData;
+let us;
+let pathData;
 
 let minDecade = 1910;
 let maxDecade = 2010;
@@ -18,15 +21,19 @@ for(let i = 0; i < 8; i++)
     for(let j = 1; j < greens.length; j+=2)
         greens.splice(j, 1);
 
-console.log(greens);
-
 document.getElementById('render-button').addEventListener('click', async () => {
     if (!created) {
         let svg = createSVG();
+
         decadeListener('next', 10, maxDecade, svg);
         decadeListener('previous', -10, minDecade, svg);
-	    ufoData = await getData();
+
+        pathData = await getUSAData();
+        ufoData = await getUFOData();
+
         render(svg);
+        renderBorders(svg);
+
         created = true;
     }
     window.scrollTo(0, visualization.offsetTop);
@@ -72,32 +79,16 @@ const createSVG = () => {
 
 const render = async (svg) => {
 
-    // states-albers-10m.json contains data about the outline of the United States
-    let us = await d3.json('static/json/states-albers-10m.json');
-
-    /*
-        topojson.feature(us, us.objects.states).features
-            creates an array of "features" objects
-            each object represents a state (or the District of Columbia)
-            the object contains the outline of the state and the name of the state
-        e.g.
-        {
-            'geometry': {'type': 'Polygon', 'coordinates': Array()},
-            'id': Number(),
-            'properties': {'name': 'Montana'},
-            'type': 'Feature',
-        }
-    */
-    let pathData = topojson.feature(us, us.objects.states).features;
-
     let colorMapper = generateColorMapper(); // create a color mapping function
 
-    svg.selectAll("path")
+    // select by classname so as to not select the border path
+    svg.selectAll(".pathFill")
         .data(pathData)
         .join(
             enter => enter.append('path')
                 // d3.geoPath() gets the coordinates from the data object and constructs a path
                 .attr('d', d3.geoPath())
+                .attr('class', 'pathFill')
                 .attr('fill', d => color(colorMapper, d)),
             update => update
                 .transition(d3.transition().duration(1500))
@@ -109,26 +100,6 @@ const render = async (svg) => {
     // svg.append("g")
     //     .attr("transform", "translate(570,20)")
     //     .append(() => legend(colorMapper, 'Number of UFO sightings', 6, 320, 50, 18, 0, 22, 0, 5, 'd'));
-
-    /*
-        topojson.mesh(us, us.objects.states)
-            creates a MultiLineString comprised of arrays
-            the arrays hold coordinates that outline the state borders
-
-        i.e. {type: "MultiLineString", coordinates: Array(195)}
-
-        topojson.mesh is useful for creating complicated outlines that can overlap
-    */
-    let borderDatum = topojson.mesh(us, us.objects.states);
-
-    svg.append("path")
-        // .datum() adds a single data point and skips the enter, update, remove step
-        .datum(borderDatum)
-        .attr("fill", "none")
-        .attr("stroke", "black")
-        // stroke-linejoin defines the behavior of a stroke at corners
-        .attr("stroke-linejoin", "round")
-        .attr("d", d3.geoPath());
 };
 
 const color = (colorMapper, d) => {
@@ -157,7 +128,50 @@ const generateColorMapper = () => {
         .range( greens.slice( 0, greens.length));
 }
 
-const getData = async () => {
+const renderBorders = (svg) => {
+    /*
+        topojson.mesh(us, us.objects.states)
+            creates a MultiLineString comprised of arrays
+            the arrays hold coordinates that outline the state borders
+
+        i.e. {type: "MultiLineString", coordinates: Array(195)}
+
+        topojson.mesh is useful for creating complicated outlines that can overlap
+    */
+   let borderDatum = topojson.mesh(us, us.objects.states);
+
+   svg.append("path")
+       // .datum() adds a single data point and skips the enter, update, remove step
+       .datum(borderDatum)
+       .attr("fill", "none")
+       .attr("class", "pathBorder")
+       .attr("stroke", "black")
+       // stroke-linejoin defines the behavior of a stroke at corners
+       .attr("stroke-linejoin", "round")
+       .attr("d", d3.geoPath());
+}
+
+const getUSAData = async () => {
+    // states-albers-10m.json contains data about the outline of the United States
+    us = await d3.json('static/json/states-albers-10m.json');
+
+    /*
+        topojson.feature(us, us.objects.states).features
+            creates an array of "features" objects
+            each object represents a state (or the District of Columbia)
+            the object contains the outline of the state and the name of the state
+        e.g.
+        {
+            'geometry': {'type': 'Polygon', 'coordinates': Array()},
+            'id': Number(),
+            'properties': {'name': 'Montana'},
+            'type': 'Feature',
+        }
+    */
+    return topojson.feature(us, us.objects.states).features;
+}
+
+const getUFOData = async () => {
 
     let stateMap = { "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming" };
 
@@ -183,8 +197,9 @@ const getData = async () => {
         }
     }
 
+    // retrieve CSV from /data route
+    let data = await d3.csv('/data');
     // fill ufoSightings with USA UFO sightings from minDecade onward.
-    let data = await d3.csv( "static/csv/scrubbed.csv");
     data.forEach( sighting => {
         let abbreviation = sighting[ 'state'];
         let date = sighting[ 'datetime'];
