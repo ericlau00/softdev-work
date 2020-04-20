@@ -1,10 +1,10 @@
 # K18: Come Up For Air
 
-Due **T 2020-04-21 08:00** EST
+Due **W 2020-04-22 08:00** EST
 
-Estimated time required: <=60min
+Estimated time required: <=90min
 
-Step 0. Process collective learnination from last work.
+Step 0. With your new buddy, process collective learnination from last work. (Visit *Hauptmann Gorbachev’s World Class First Rate Guaranteed-to-Find-yer-Mate Buddy Bazaar* to see who was already paired off during class, if you missed it, and solicit the remaining free agents.)
 
 1. Find a dataset in CSV or JSON format that is
    - manageable,
