@@ -1,0 +1,15 @@
+[submodule "projects/00-tumblrr"]
+	path = projects/00-tumblrr
+	url = https://github.com/ericlau00/00-tumblrr.git
+[submodule "projects/05-caerus"]
+	path = projects/05-caerus
+	url = https://github.com/ericlau00/05-caerus.git
+[submodule "projects/04-covid3js"]
+	path = projects/04-covid3js
+	url = https://github.com/ericlau00/04-covid3js.git
+[submodule "projects/02-RYthEM"]
+	path = projects/02-RYthEM
+	url = https://github.com/ericlau00/02-RYthEM.git
+[submodule "projects/01-ArtPI"]
+	path = projects/01-ArtPI
+	url = https://github.com/ericlau00/01-ArtPI.git
